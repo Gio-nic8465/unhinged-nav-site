@@ -17,7 +17,7 @@
     <meta name="twitter:title" content="Unhinged Nav | Voice-First Navigation with Personality" />
     <meta name="twitter:description" content="Voice-first GPS navigation for Android and iPhone with Codependent, Sarcastic, and Adult personality modes. Join the beta waitlist." />
     <meta name="twitter:image" content="https://unhingednav.com/unhinged-metallic-logo.png" />
-    <link rel="canonical" href="https://unhingednav.com/" />
+    <link rel="canonical" href="https://unhingednav.com/" />\n    <link rel="preload" href="/unhinged-metallic-logo.png" as="image" type="image/png" />
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="author" content="Unhinged Nav" />
     <meta property="og:site_name" content="Unhinged Nav" />
@@ -1181,7 +1181,7 @@
       <div id="signup-content">
         <h2>Join the first wave</h2>
         <p>Android beta testers wanted. Sign up now; weâ€™ll email the Google Play testing link when the beta is ready. iPhone beta is coming soon.</p>
-        <form class="beta-form" id="beta-form">
+        <form class="beta-form" id="beta-form">\n          <div class="bot-trap" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
           <label
             >Name<input
               type="text"
@@ -1391,7 +1391,17 @@
             const response = await fetch("https://lmzzcnbtzjqwnufmtdjh.supabase.co/functions/v1/beta-signup", {
               method: "POST",
               headers: { "content-type": "application/json" },
-              body: JSON.stringify(Object.fromEntries(new FormData(form))),
+              body: JSON.stringify((() => {
+                const payload = Object.fromEntries(new FormData(form));
+                const params = new URLSearchParams(window.location.search);
+                payload.campaign = "first-wave";
+                payload.utm_source = params.get("utm_source");
+                payload.utm_medium = params.get("utm_medium");
+                payload.utm_campaign = params.get("utm_campaign");
+                payload.landing_url = window.location.href;
+                payload.referrer_url = document.referrer || null;
+                return payload;
+              })()),
             });
             if (!response.ok) throw new Error("Unable to submit");
             document.getElementById("signup-confirmation").textContent = form.elements.phoneType.value === "Android"
