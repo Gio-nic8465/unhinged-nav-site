@@ -1,0 +1,22 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify search engines
+        shell: bash
+        run: |
+          KEY="8f1c6d2a9b7043e5a6d19c8f2b47e530"
+          SITE="https://unhingednav.com/"
+          KEY_LOCATION="https://unhingednav.com/8f1c6d2a9b7043e5a6d19c8f2b47e530.txt"
+          if ! curl -fsS --max-time 10 "$KEY_LOCATION" >/dev/null; then
+            SITE="http://unhingednav.com/"
+            KEY_LOCATION="http://unhingednav.com/8f1c6d2a9b7043e5a6d19c8f2b47e530.txt"
+          fi
+          curl --fail-with-body --silent --show-error             "https://api.indexnow.org/indexnow?url=$SITE&key=$KEY&keyLocation=$KEY_LOCATION"
