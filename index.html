@@ -1269,6 +1269,7 @@
         <a href="mailto:hello@unhingednav.com">hello@unhingednav.com</a>
       </p>
     </dialog>
+<script src="/assets/creator-referral.js"></script>
     <script>
       const samples = {
         codependent: {
@@ -1399,6 +1400,7 @@
                 const payload = Object.fromEntries(new FormData(form));
                 const params = new URLSearchParams(window.location.search);
                 payload.campaign = "first-wave";
+                payload.creator_referral_code = window.UnhingedReferral?.codeFrom(window.location.search) || null;
                 payload.utm_source = params.get("utm_source");
                 payload.utm_medium = params.get("utm_medium");
                 payload.utm_campaign = params.get("utm_campaign");
