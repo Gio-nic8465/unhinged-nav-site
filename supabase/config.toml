@@ -1,0 +1,5 @@
+# Public intake endpoints validate bodies and abuse controls internally.
+[functions.creator-application]
+verify_jwt = false
+[functions.beta-signup]
+verify_jwt = false
