@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b090c" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://unhingednav.com/philosophy/" />
+    <link rel="icon" href="/unhinged-metallic-logo.png" type="image/png" />
+    <title>Our Philosophy | Unhinged Nav</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
+      body {
+        background:
+          radial-gradient(circle at 50% 10%, rgba(206, 23, 52, 0.20), transparent 34rem),
+          linear-gradient(180deg, #120c0f 0%, #0b090c 48%, #070607 100%);
+        color: #f7f0df;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(100% - 28px, 980px);
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 44px 0;
+      }
+      .promo {
+        width: 100%;
+        text-align: center;
+        padding: clamp(30px, 7vw, 64px) clamp(20px, 6vw, 58px);
+        border: 1px solid rgba(241, 197, 80, 0.48);
+        border-radius: 28px;
+        background: linear-gradient(145deg, rgba(206, 23, 52, 0.10), rgba(21, 17, 22, 0.96));
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.42);
+      }
+      .logo {
+        display: block;
+        width: min(310px, 74vw);
+        height: auto;
+        margin: 0 auto 28px;
+        filter: drop-shadow(0 0 24px rgba(206, 23, 52, 0.34));
+      }
+      h1 {
+        margin: 0;
+        color: #ce1734;
+        font-size: clamp(2rem, 7vw, 4.7rem);
+        line-height: 0.95;
+        letter-spacing: 0.04em;
+        font-weight: 950;
+      }
+      .rule {
+        width: min(540px, 82%);
+        height: 1px;
+        margin: clamp(30px, 7vw, 54px) auto;
+        background: linear-gradient(90deg, transparent, rgba(241, 197, 80, 0.9), transparent);
+      }
+      .philosophy {
+        margin: 0 auto;
+        max-width: 850px;
+        color: #f7f0df;
+        font-size: clamp(1.35rem, 4.5vw, 2.55rem);
+        line-height: 1.35;
+        font-weight: 900;
+        text-wrap: balance;
+      }
+      .philosophy strong { color: #f1c550; }
+      .back {
+        display: inline-block;
+        margin-top: 34px;
+        color: #b9afb1;
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+      .back:focus-visible, .back:hover { color: #f1c550; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="promo" aria-labelledby="brand-title">
+        <img class="logo" src="/unhinged-metallic-logo.png" alt="Unhinged Nav red-and-gold logo" />
+        <h1 id="brand-title">UNHINGED NAV</h1>
+        <div class="rule" aria-hidden="true"></div>
+        <p class="philosophy">
+          Observe hard. Think independently. Test everything.
+          <strong>Keep what works. Keep them safe.</strong>
+        </p>
+        <a class="back" href="/">UnhingedNav.com</a>
+      </section>
+    </main>
+  </body>
+</html>
