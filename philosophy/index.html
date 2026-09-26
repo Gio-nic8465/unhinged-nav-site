@@ -40,21 +40,21 @@
         display: block;
         width: min(310px, 74vw);
         height: auto;
-        margin: 0 auto 28px;
+        margin: 0 auto 18px;
         filter: drop-shadow(0 0 24px rgba(206, 23, 52, 0.34));
       }
       h1 {
         margin: 0;
-        color: #ce1734;
-        font-size: clamp(2rem, 7vw, 4.7rem);
-        line-height: 0.95;
-        letter-spacing: 0.04em;
+        color: #f1c550;
+        font-size: clamp(1.55rem, 5vw, 3rem);
+        line-height: 1;
+        letter-spacing: 0.02em;
         font-weight: 950;
       }
       .rule {
         width: min(540px, 82%);
         height: 1px;
-        margin: clamp(30px, 7vw, 54px) auto;
+        margin: clamp(28px, 6vw, 46px) auto;
         background: linear-gradient(90deg, transparent, rgba(241, 197, 80, 0.9), transparent);
       }
       .philosophy {
@@ -67,27 +67,35 @@
         text-wrap: balance;
       }
       .philosophy strong { color: #f1c550; }
-      .back {
-        display: inline-block;
-        margin-top: 34px;
-        color: #b9afb1;
-        font-size: 0.9rem;
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        margin-top: 36px;
+        padding: 0 28px;
+        border-radius: 14px;
+        background: #ce1734;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 950;
+        letter-spacing: 0.05em;
         text-decoration: none;
       }
-      .back:focus-visible, .back:hover { color: #f1c550; }
+      .cta:focus-visible, .cta:hover { outline: 2px solid #f1c550; outline-offset: 3px; }
     </style>
   </head>
   <body>
     <main>
       <section class="promo" aria-labelledby="brand-title">
         <img class="logo" src="/unhinged-metallic-logo.png" alt="Unhinged Nav red-and-gold logo" />
-        <h1 id="brand-title">UNHINGED NAV</h1>
+        <h1 id="brand-title">UnhingedNav.com</h1>
         <div class="rule" aria-hidden="true"></div>
         <p class="philosophy">
           Observe hard. Think independently. Test everything.
           <strong>Keep what works. Keep them safe.</strong>
         </p>
-        <a class="back" href="/">UnhingedNav.com</a>
+        <a class="cta" href="/#beta">JOIN THE FIRST WAVE</a>
       </section>
     </main>
   </body>
