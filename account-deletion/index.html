@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Account and Data Deletion | Unhinged Nav</title>
+<meta name="description" content="Request deletion of your Unhinged Nav account and associated data.">
+<link rel="canonical" href="https://unhingednav.com/account-deletion/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta property="og:title" content="Account and Data Deletion | Unhinged Nav">
+<meta property="og:description" content="Request deletion of your Unhinged Nav account and associated data.">
+<meta property="og:url" content="https://unhingednav.com/account-deletion/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://unhingednav.com/unhinged-metallic-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/unhinged-metallic-logo.png" type="image/png">
+<link rel="stylesheet" href="/seo.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://unhingednav.com/account-deletion/#page","url":"https://unhingednav.com/account-deletion/","name":"Account and Data Deletion | Unhinged Nav","description":"Request deletion of your Unhinged Nav account and associated data.","isPartOf":{"@id":"https://unhingednav.com/#website"},"inLanguage":"en"},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://unhingednav.com/"},{"@type":"ListItem","position":2,"name":"Account and Data Deletion","item":"https://unhingednav.com/account-deletion/"}]}
+]}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><a class="brand" href="/"><img src="/unhinged-metallic-logo.png" width="58" height="44" alt="Unhinged Nav"><span>UNHINGED NAV</span></a><nav class="navlinks" aria-label="Main navigation"><a href="/features/">Features</a><a href="/voice-navigation/">Voice</a><a href="/android-beta/">Android Beta</a><a href="/iphone/">iPhone</a><a href="/safety/">Safety</a></nav></div></header>
+<main><div class="wrap"><h1>Request Unhinged Nav account and data deletion</h1><p>You can request deletion without reinstalling the app. This form saves a request; it does not immediately delete an account.</p><p>We verify account and trip ownership before deleting the account, associated account data, requested waitlist data and diagnostic records we can securely associate with you. Legacy guest diagnostics may require additional information from the originating phone. See our <a href="/privacy/">retention and deletion policy</a>. We will explain any lawful retention exception when processing your request.</p><form id="deletion-form"><label for="email">Your app-account or signup email</label><br><input id="email" type="email" autocomplete="email" required maxlength="254" style="width:min(100%,32rem);min-height:48px"><p><label><input id="confirm" type="checkbox" required> I request deletion of my Unhinged Nav account and associated data. I understand ownership must be verified and the account is not deleted until processing is complete.</label></p><button type="submit" style="min-height:48px">Submit deletion request</button><p id="result" role="status" aria-live="polite"></p></form><p>You can also submit a signed-in request from Privacy and account deletion at the bottom of app Settings. Never send a password or audio recording.</p><script>document.getElementById('deletion-form').addEventListener('submit',async function(event){event.preventDefault();const button=this.querySelector('button'),result=document.getElementById('result');button.disabled=true;result.textContent='Saving your request...';try{const response=await fetch('https://lmzzcnbtzjqwnufmtdjh.supabase.co/functions/v1/account-deletion-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('email').value,confirm:document.getElementById('confirm').checked})});const body=await response.json();if(!response.ok||!body.accepted)throw Error('unavailable');result.textContent='Request received. We verify account and trip ownership before deleting data. This receipt does not mean deletion is complete.';this.reset();}catch{result.textContent='Your request could not be saved. Please try again later. No deletion has been performed.';}finally{button.disabled=false;}});</script></div></main>
+<footer><div class="wrap"><strong>UNHINGED NAV</strong><div class="footlinks"><a href="/features/">Features</a><a href="/voice-navigation/">Voice Navigation</a><a href="/android-beta/">Android Beta</a><a href="/iphone/">iPhone</a><a href="/safety/">Safety</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/account-deletion/">Account deletion</a><a href="mailto:hello@unhingednav.com">Support</a></div><p class="small">Navigation with personality. No sponsored search placement.</p></div></footer>
+</body></html>
