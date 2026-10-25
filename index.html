@@ -953,6 +953,19 @@
       .hero-beta-recruitment strong { display: block; color: var(--gold); font-size: clamp(1.1rem, 2.5vw, 1.4rem); line-height: 1.35; }
       .hero-beta-recruitment p { margin: 10px 0 0; font-size: 1rem; line-height: 1.5; }
       .hero-beta-recruitment .iphone-waitlist { color: var(--muted); font-size: .9rem; }
+
+      .beta-tester-info { margin:20px auto 0; padding:22px; max-width:620px; border:2px solid var(--gold); border-radius:18px; background:#110d0f; text-align:left; }
+      .beta-tester-info h3 { margin:0 0 12px; color:var(--gold); font-size:1.5rem; line-height:1.2; }
+      .beta-tester-info p, .beta-tester-info li { font-size:.98rem; line-height:1.5; color:var(--cream); }
+      .beta-tester-info ul { margin:14px 0; padding-left:22px; }
+      .beta-tester-info li + li { margin-top:10px; }
+      .beta-tester-info a { color:var(--gold); overflow-wrap:anywhere; }
+      .beta-tester-info .beta-timing { border-top:1px solid var(--line); padding-top:14px; }
+      .beta-tester-info .beta-safe { font-size:.88rem; color:var(--muted); }
+      .beta-tester-info .btn { width:100%; margin-top:12px; text-align:center; }
+      #beta-download { max-height:90dvh; overflow-y:auto; }
+      #beta-download .beta-tester-info { padding:16px; }
+      @media(max-width:480px) { .beta-tester-info { padding:18px; } #beta-download { padding:20px; } }
     </style>
   </head>
   <body>
@@ -1018,6 +1031,7 @@
             <p>Preregister now. We’ll email your Google Play testing link when the beta is ready.</p>
             <p class="iphone-waitlist">iPhone beta coming soon — join the future waitlist.</p>
           </div>
+<aside class="beta-tester-info" aria-label="Android beta tester commitment"><h3>Can you give us two weeks?</h3><p><strong>U.S. Android testers, ages 18+.</strong> Sign up with the email you use for Google Play.</p><ul><li><strong>Stay opted in for at least 14 consecutive days</strong> after joining the Google Play closed test. Keep the beta installed during that time.</li><li>Use the app regularly over those two weeks. Try place searches, nearby categories, route previews, navigation and available voice styles.</li><li>Tell us what works and what needs fixing: <a href="mailto:hello@unhingednav.com">hello@unhingednav.com</a>. Honest feedback helps us improve the app.</li></ul><p class="beta-timing"><strong>Google Play approval is pending.</strong> This signup is preregistration. Your 14 days start when you opt in to the Google Play test, not when you join this waitlist. We will email the testing link and instructions when available.</p><p class="beta-safe">Set up routes while parked or as a passenger. Follow road signs and local laws.</p><button class="btn btn-primary button-reset" type="button" data-open-beta>SIGN UP TO TEST</button></aside>
         </div>
       </div>
       <section id="modes">
@@ -1258,6 +1272,7 @@
       <div id="signup-content">
         <h2>Join the first wave</h2>
         <p>Android beta testers wanted. Sign up now; we’ll email the Google Play testing link when the beta is ready. iPhone beta is coming soon.</p>
+        <aside class="beta-tester-info" aria-label="Android beta tester commitment"><h3>Can you give us two weeks?</h3><p><strong>U.S. Android testers, ages 18+.</strong> Sign up with the email you use for Google Play.</p><ul><li><strong>Stay opted in for at least 14 consecutive days</strong> after joining the Google Play closed test. Keep the beta installed during that time.</li><li>Use the app regularly over those two weeks. Try place searches, nearby categories, route previews, navigation and available voice styles.</li><li>Tell us what works and what needs fixing: <a href="mailto:hello@unhingednav.com">hello@unhingednav.com</a>. Honest feedback helps us improve the app.</li></ul><p class="beta-timing"><strong>Google Play approval is pending.</strong> This signup is preregistration. Your 14 days start when you opt in to the Google Play test, not when you join this waitlist. We will email the testing link and instructions when available.</p><p class="beta-safe">Set up routes while parked or as a passenger. Follow road signs and local laws.</p></aside>
         <form class="beta-form" id="beta-form">
           <div class="bot-trap" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
           <label
