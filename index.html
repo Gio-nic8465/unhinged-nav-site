@@ -1329,11 +1329,13 @@
       </div>
     </dialog>
     <dialog id="privacy"><button class="close" aria-label="Close privacy policy" onclick="this.closest('dialog').close()">x</button><h2>Privacy policy updated October 22, 2026</h2><p>Read our full policy covering black-box diagnostics, voice processing, retention and deletion.</p><p><a href="/privacy/">Read the full Privacy Policy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/account-deletion/">Request account and data deletion</a></p></dialog>
+    <audio id="mode-audio" preload="none" aria-hidden="true"></audio>
     <script>
       const samples = {
         codependent: {
           label: "CODEPENDENT MODE",
           line: "“Turn right in 500 feet, sweetheart. You’re doing great. You still need me, right?”",
+          src: "/codependent-female-preview.wav",
           preview: true,
         },
         sarcastic: {
@@ -1349,86 +1351,46 @@
       };
       const voiceCard = document.getElementById("voice-card");
       const modeButtons = [...document.querySelectorAll(".mode-switch button")];
+      const activeAudio = document.getElementById("mode-audio");
+      let playbackId = 0;
       const finishAudio = () => {
         voiceCard.classList.remove("playing");
         modeButtons.forEach((item) => item.classList.remove("speaking"));
       };
-      let activeAudio = null;
-      let speechPreview = null;
-      let playbackId = 0;
-      let previewTimer = null;
-      const femalePreviewVoice = () => window.speechSynthesis.getVoices()
-        .filter(voice => /^en(?:[-_]|$)/i.test(voice.lang))
-        .find(voice => /(?:\bfemale\b|\bSamantha\b|\bVictoria\b|\bKaren\b|\bMoira\b|\bTessa\b|\bZira\b|\bSusan\b|\bHazel\b|\bJenny\b|\bAria\b|\bJoanna\b|\bSalli\b)/i.test(voice.name));
-      // Prime the voice inventory; some devices load it asynchronously.
-      if ("speechSynthesis" in window) window.speechSynthesis.getVoices();
       modeButtons.forEach((button) =>
         button.addEventListener("click", () => {
           const currentPlayback = ++playbackId;
-          clearTimeout(previewTimer);
-          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-          if (activeAudio) {
-            activeAudio.pause();
-            activeAudio.currentTime = 0;
-          }
+          activeAudio.onplaying = activeAudio.onended = activeAudio.onerror = null;
+          activeAudio.pause();
           finishAudio();
           const sample = samples[button.dataset.mode];
           modeButtons.forEach((item) => item.classList.remove("active"));
-          button.classList.add("active", "speaking");
-          voiceCard.classList.add("playing");
+          button.classList.add("active");
           document.getElementById("sample-label").textContent = sample.label;
           document.getElementById("sample-line").textContent = sample.line;
           const note = document.getElementById("sample-note");
           note.classList.toggle("hidden", !sample.preview);
-          note.textContent = sample.preview ? "Preview voice — final character recording coming soon." : "";
+          note.textContent = sample.preview
+            ? "Neighbor Nancy — female preview voice. Final character recording coming soon."
+            : "";
           const finishCurrent = () => {
             if (currentPlayback === playbackId) finishAudio();
           };
-          if (sample.preview) {
-            if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-              note.textContent = "Read the sample above. Voice preview is unavailable on this browser.";
-              finishCurrent();
-              return;
-            }
-            const voice = femalePreviewVoice();
-            if (!voice) {
-              note.textContent = "Neighbor Nancy’s female voice preview is not available on this device yet. Read her sample above.";
-              finishCurrent();
-              return;
-            }
-            note.textContent = "Neighbor Nancy — female preview voice. Final character recording coming soon.";
-            const beats = [
-              { text: "Turn right in 500 feet, sweetheart.", pause: 450 },
-              { text: "You’re doing great.", pause: 650 },
-              { text: "You still need me, right?", pause: 0 },
-            ];
-            const sayBeat = index => {
-              if (currentPlayback !== playbackId) return;
-              speechPreview = new SpeechSynthesisUtterance(beats[index].text);
-              speechPreview.voice = voice;
-              speechPreview.lang = voice.lang;
-              speechPreview.rate = 0.92;
-              speechPreview.pitch = 1;
-              speechPreview.onend = () => {
-                if (currentPlayback !== playbackId) return;
-                if (index === beats.length - 1) finishCurrent();
-                else previewTimer = setTimeout(() => sayBeat(index + 1), beats[index].pause);
-              };
-              speechPreview.onerror = () => {
-                if (currentPlayback !== playbackId) return;
-                note.textContent = "Read the sample above. Voice preview is unavailable on this browser.";
-                finishCurrent();
-              };
-              window.speechSynthesis.speak(speechPreview);
-            };
-            sayBeat(0);
-            return;
-          }
-          activeAudio = new Audio(sample.src);
-          activeAudio.preload = "auto";
+          const failCurrent = () => {
+            if (currentPlayback !== playbackId) return;
+            note.classList.remove("hidden");
+            note.textContent = "Voice sample couldn’t play. Tap the mode to try again.";
+            finishCurrent();
+          };
+          activeAudio.onplaying = () => {
+            if (currentPlayback !== playbackId) return;
+            button.classList.add("speaking");
+            voiceCard.classList.add("playing");
+          };
           activeAudio.onended = finishCurrent;
-          activeAudio.onerror = finishCurrent;
-          activeAudio.play().catch(finishCurrent);
+          activeAudio.onerror = failCurrent;
+          activeAudio.src = sample.src;
+          activeAudio.play().catch(failCurrent);
         }),
       );
       const betaDialog = document.getElementById("beta-download");
