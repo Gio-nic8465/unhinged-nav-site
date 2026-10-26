@@ -3,90 +3,114 @@
     "id": "brenda",
     "name": "Brenda Borderline",
     "mode": "Codependent",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "brenda.mp3",
-    "bytes": 35712,
-    "sha256": "8ba4e220b3783693965300265affb30741291a6dea36bf7b1de5eb49bd403d46",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. I packed reassurance for both of us.",
+    "file": "brenda-us-character.mp3",
+    "bytes": 50688,
+    "sha256": "82f34494a3604ffba25db419a1e4d2e29815d043b7fdbc433c3db5dd565837df",
+    "provider": "Chatterbox Turbo",
+    "bleep": null
   },
   {
     "id": "marty",
     "name": "Marty Martyr",
     "mode": "Codependent",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "marty.mp3",
-    "bytes": 35136,
-    "sha256": "acd094655a02232a35f4b3e2fe905c48533b46cd083ac54a7ef969caf943a94f",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. I did all this planning. No need to thank me.",
+    "file": "marty-us-character.mp3",
+    "bytes": 70560,
+    "sha256": "54bb49b7b4f17b2c535ccec134eaeaafa76057816dc1e8544a3b38d9701e1a27",
+    "provider": "Chatterbox Turbo",
+    "bleep": null
   },
   {
     "id": "hal",
     "name": "HAL",
     "mode": "Codependent",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "hal.mp3",
-    "bytes": 34272,
-    "sha256": "103ec75b9ae1f8c0109951592aeace21242f9143fd8132e3e4d45ef67a01fb85",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. Your continued cooperation is comforting.",
+    "file": "hal-us-character.mp3",
+    "bytes": 57888,
+    "sha256": "d50a78dd318a102b0757d6b55ed7ce26b011d02b02d0b2078c2c85dbbc8310e6",
+    "provider": "Chatterbox Turbo",
+    "bleep": null
   },
   {
     "id": "graham",
     "name": "Graham Grudge",
     "mode": "Sarcastic",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "graham.mp3",
-    "bytes": 36576,
-    "sha256": "e37f5ab5d2465348f8caffe7eb3365bf29a2a7293589001fb3d9f6878ab903c7",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. I have lowered my expectations accordingly.",
+    "file": "graham-us-character.mp3",
+    "bytes": 67680,
+    "sha256": "fce09728b569822a5438597d339ff2d59de386d82de8b03875a0b03b4b06e7ea",
+    "provider": "Chatterbox Turbo",
+    "bleep": null
   },
   {
     "id": "roxie",
     "name": "Roxie Razor",
     "mode": "Sarcastic",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "roxie.mp3",
-    "bytes": 40032,
-    "sha256": "ec94a56383fd885299fda7edf8bb3ab2f9bcade1fa31d26aeb67116e068fba6f",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. Make it look intentional.",
+    "file": "roxie-us-character.mp3",
+    "bytes": 58752,
+    "sha256": "09cfe1d0766e81d9fe81779cfb958bb9ad8312b06294ed804d664ce50ac145aa",
+    "provider": "Chatterbox Turbo",
+    "bleep": null
   },
   {
     "id": "raven",
     "name": "Raven Morrow",
     "mode": "Sarcastic",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "raven.mp3",
-    "bytes": 39456,
-    "sha256": "01e9080795328d476619c8e6858e836301158e931ea2e46516e17ace7038a339",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. Another small victory against chaos.",
+    "file": "raven-us-character.mp3",
+    "bytes": 57888,
+    "sha256": "d6c33e63d4f359edd6ad073446aac73c3ac184b6566d98284e8aaadee37639c3",
+    "provider": "Chatterbox Turbo",
+    "bleep": null
   },
   {
     "id": "frankie",
     "name": "Frankie Fastlane",
     "mode": "Adult",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "frankie.mp3",
-    "bytes": 33696,
-    "sha256": "e864ca3284172a54bcd03c23ff3067ad48750bac5ab79de4d76c6f5b9a586722",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. Keep the wheels steady and the [bleep] optional.",
+    "file": "frankie-us-character.mp3",
+    "bytes": 78624,
+    "sha256": "a912047e0f6c51c3f67750b5d13f64153fb66079c550fc3fe80d35fdaad664fb",
+    "provider": "Chatterbox Turbo",
+    "bleep": {
+      "startSeconds": 5.1,
+      "endSeconds": 5.6,
+      "toneHz": 1000,
+      "toneSeconds": 0.38
+    }
   },
   {
     "id": "rita",
     "name": "Rita Redline",
     "mode": "Adult",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "rita.mp3",
-    "bytes": 38016,
-    "sha256": "f4db92960661163b5f95917559d7285cdb2f559904c5be664911477c51c1f34e",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. Eyes up. We can discuss your [bleep] decisions later.",
+    "file": "rita-us-character.mp3",
+    "bytes": 86976,
+    "sha256": "ac71050e2c46427f48ac4e980c1bd5923f599b98d8608976bf217efca15ebc7b",
+    "provider": "Chatterbox Turbo",
+    "bleep": {
+      "startSeconds": 5.54,
+      "endSeconds": 6.04,
+      "toneHz": 1000,
+      "toneSeconds": 0.38
+    }
   },
   {
     "id": "vivienne",
     "name": "Vivienne Vex",
     "mode": "Adult",
-    "line": "Turn left onto Main Street in two hundred meters.",
-    "file": "vivienne.mp3",
-    "bytes": 35424,
-    "sha256": "de05fa51ff3761cf93086fe9f235c645c19266af3dbfde8c870278e7cd170acc",
-    "provider": "Chatterbox Turbo"
+    "line": "In two hundred feet, turn left onto Main Street. A little composure. This is not a [bleep] audition.",
+    "file": "vivienne-us-character.mp3",
+    "bytes": 99360,
+    "sha256": "ec12fb39724806305d2c4d68bbbf8a61c0ecd7264c409b8b024ba04b299511de",
+    "provider": "Chatterbox Turbo",
+    "bleep": {
+      "startSeconds": 6.62,
+      "endSeconds": 7.12,
+      "toneHz": 1000,
+      "toneSeconds": 0.38
+    }
   }
 ]

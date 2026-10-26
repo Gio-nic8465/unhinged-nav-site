@@ -1105,7 +1105,7 @@
               <div class="mode-demo-title">MEET THE CHARACTERS</div>
               <div class="route-card">
                 <small>NEXT TURN</small>
-                <p>Left onto Main Street in 200 meters</p>
+                <p>Left onto Main Street in 200 feet</p>
               </div>
               <div class="mode-choice-cue" aria-hidden="true">
                 <strong>CLICK TO HEAR</strong>
@@ -1131,9 +1131,9 @@
               </div>
               <div class="voice" id="voice-card" aria-live="polite">
                 <span id="sample-label">Brenda Borderline · Codependent</span>
-                <div id="sample-line">“Turn left onto Main Street in two hundred meters.”</div>
+                <div id="sample-line">“In two hundred feet, turn left onto Main Street. I packed reassurance for both of us.”</div>
               </div>
-              <p id="sample-note" class="personality-note" aria-live="polite">Same direction. Nine real app voices. Character dialogue varies in the app.</p>
+              <p id="sample-note" class="personality-note" aria-live="polite">Nine app characters. Adult samples are bleeped for the website.</p>
               <p class="profanity-note">
                 Adult Mode is optional, uncensored in the app, and intended for ages 18+.
               </p>
@@ -1365,56 +1365,56 @@
         "brenda": {
                 "name": "Brenda Borderline",
                 "mode": "Codependent",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/brenda.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. I packed reassurance for both of us.",
+                "src": "/media/voices/brenda-us-character.mp3"
         },
         "marty": {
                 "name": "Marty Martyr",
                 "mode": "Codependent",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/marty.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. I did all this planning. No need to thank me.",
+                "src": "/media/voices/marty-us-character.mp3"
         },
         "hal": {
                 "name": "HAL",
                 "mode": "Codependent",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/hal.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. Your continued cooperation is comforting.",
+                "src": "/media/voices/hal-us-character.mp3"
         },
         "graham": {
                 "name": "Graham Grudge",
                 "mode": "Sarcastic",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/graham.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. I have lowered my expectations accordingly.",
+                "src": "/media/voices/graham-us-character.mp3"
         },
         "roxie": {
                 "name": "Roxie Razor",
                 "mode": "Sarcastic",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/roxie.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. Make it look intentional.",
+                "src": "/media/voices/roxie-us-character.mp3"
         },
         "raven": {
                 "name": "Raven Morrow",
                 "mode": "Sarcastic",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/raven.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. Another small victory against chaos.",
+                "src": "/media/voices/raven-us-character.mp3"
         },
         "frankie": {
                 "name": "Frankie Fastlane",
                 "mode": "Adult",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/frankie.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. Keep the wheels steady and the [bleep] optional.",
+                "src": "/media/voices/frankie-us-character.mp3"
         },
         "rita": {
                 "name": "Rita Redline",
                 "mode": "Adult",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/rita.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. Eyes up. We can discuss your [bleep] decisions later.",
+                "src": "/media/voices/rita-us-character.mp3"
         },
         "vivienne": {
                 "name": "Vivienne Vex",
                 "mode": "Adult",
-                "line": "Turn left onto Main Street in two hundred meters.",
-                "src": "/media/voices/vivienne.mp3"
+                "line": "In two hundred feet, turn left onto Main Street. A little composure. This is not a [bleep] audition.",
+                "src": "/media/voices/vivienne-us-character.mp3"
         }
 };
       const voiceCard = document.getElementById("voice-card");
@@ -1440,7 +1440,7 @@
         });
         document.getElementById("sample-label").textContent = sample.name + " · " + sample.mode;
         document.getElementById("sample-line").textContent = "“" + sample.line + "”";
-        note.textContent = "Same direction. Nine real app voices. Character dialogue varies in the app.";
+        note.textContent = "Nine app characters. Adult samples are bleeped for the website.";
         const finishCurrent = () => {
           if (currentPlayback === playbackId) finishAudio();
         };

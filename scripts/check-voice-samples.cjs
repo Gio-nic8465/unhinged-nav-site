@@ -5,6 +5,17 @@ assert.equal((html.match(/<audio id="mode-audio"/g)||[]).length,1);
 assert(!/speechSynthesis|Neighbor Nancy|ny-copilot|codependent-female-preview\.wav/.test(html));
 const manifest=JSON.parse(fs.readFileSync(path.join(site,'media/voices/samples.json'),'utf8'));
 assert.equal(manifest.length,9);
+assert(html.includes('200 feet'), 'U.S. distance display');
+assert(!/\bmeters\b|\bmetres\b|\bbullshit\b|\bdamn\b/i.test(html), 'Public demo copy uses feet and bleeps');
+for (const sample of manifest) {
+ assert.match(sample.line, /two hundred feet/);
+ assert(!/meters|metres|bullshit|damn/i.test(sample.line));
+ if (sample.mode === 'Adult') {
+  assert.match(sample.line, /\[bleep\]/);
+  assert.equal(sample.bleep.toneHz, 1000);
+  assert.equal(sample.bleep.toneSeconds, 0.38);
+ } else assert.equal(sample.bleep, null);
+}
 function elem(attrs={}){
  const values=new Set((attrs.class||'').split(' ').filter(Boolean));
  return {dataset:{},textContent:'',hidden:Object.hasOwn(attrs,'hidden'),attrs,
@@ -47,7 +58,7 @@ modes[1].click();audio.onplaying();staleEnd();staleReject(Error('cancelled'));
 setImmediate(()=>{
  assert(map['voice-card'].classList.contains('playing'),'stale callbacks cannot stop newer playback');
  audio.onerror();assert.match(map['sample-note'].textContent,/Tap the character/);assert(!map['voice-card'].classList.contains('playing'));
- characters[4].click();audio.onplaying();assert.match(map['sample-note'].textContent,/Nine real app voices/);
+ characters[4].click();audio.onplaying();assert.match(map['sample-note'].textContent,/Nine app characters/);
  assert(map['voice-card'].classList.contains('playing'));audio.onended();
  for(const script of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))if(!script[0].includes('application/ld+json'))new vm.Script(script[1]);
  console.log('PASS: 9 characters, 3 mode groups, no autoplay/provider calls/system voice, all audio hashes, correct labels, selection, switching, stale callbacks, error/retry and completion; inline scripts parse.');
