@@ -1104,8 +1104,8 @@
             <div class="phone-screen">
               <div class="mode-demo-title">MEET THE CHARACTERS</div>
               <div class="route-card">
-                <small>NEXT TURN</small>
-                <p>Left onto Main Street in 200 feet</p>
+                <small id="sample-direction-label">NEXT TURN</small>
+                <p id="sample-direction">Left onto Main Street in 200 feet</p>
               </div>
               <div class="mode-choice-cue" aria-hidden="true">
                 <strong>CLICK TO HEAR</strong>
@@ -1413,8 +1413,10 @@
         "vivienne": {
                 "name": "Vivienne Vex",
                 "mode": "Adult",
-                "line": "In two hundred feet, turn left onto Main Street. A little composure. This is not a [bleep] audition.",
-                "src": "/media/voices/vivienne-us-character.mp3"
+                "line": "Continue ahead when it is safe. A little composure. This is not a [bleep] audition.",
+                "src": "/media/voices/vivienne-app-approved-bleep-v2.mp3",
+                "cue": "Continue ahead when it is safe.",
+                "cueLabel": "GUIDANCE PREVIEW"
         }
 };
       const voiceCard = document.getElementById("voice-card");
@@ -1439,6 +1441,8 @@
           item.setAttribute("aria-pressed", String(selected));
         });
         document.getElementById("sample-label").textContent = sample.name + " · " + sample.mode;
+        document.getElementById("sample-direction").textContent = sample.cue || "Left onto Main Street in 200 feet";
+        document.getElementById("sample-direction-label").textContent = sample.cueLabel || "NEXT TURN";
         document.getElementById("sample-line").textContent = "“" + sample.line + "”";
         note.textContent = "Nine app characters. Adult samples are bleeped for the website.";
         const finishCurrent = () => {

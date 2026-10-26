@@ -101,16 +101,18 @@
     "id": "vivienne",
     "name": "Vivienne Vex",
     "mode": "Adult",
-    "line": "In two hundred feet, turn left onto Main Street. A little composure. This is not a [bleep] audition.",
-    "file": "vivienne-us-character.mp3",
-    "bytes": 99360,
-    "sha256": "ec12fb39724806305d2c4d68bbbf8a61c0ecd7264c409b8b024ba04b299511de",
+    "line": "Continue ahead when it is safe. A little composure. This is not a [bleep] audition.",
+    "file": "vivienne-app-approved-bleep-v2.mp3",
+    "bytes": 57645,
+    "sha256": "995acb8a00aaabce9f53bd4560eb68678e49b4defb8022287e2064839416cf0f",
     "provider": "Chatterbox Turbo",
     "bleep": {
-      "startSeconds": 6.62,
-      "endSeconds": 7.12,
+      "startSeconds": 3.62,
+      "endSeconds": 4.02,
       "toneHz": 1000,
-      "toneSeconds": 0.38
-    }
+      "toneSeconds": 0.4
+    },
+    "sourceSha256": "ab20eb8f2f787967de3108593396ce863d9dad8ae08d4501c39bf5c3a972cace",
+    "edit": "Owner-approved app recording; only the swear-word interval replaced with a tone."
   }
 ]

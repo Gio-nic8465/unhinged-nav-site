@@ -8,12 +8,13 @@ assert.equal(manifest.length,9);
 assert(html.includes('200 feet'), 'U.S. distance display');
 assert(!/\bmeters\b|\bmetres\b|\bbullshit\b|\bdamn\b/i.test(html), 'Public demo copy uses feet and bleeps');
 for (const sample of manifest) {
- assert.match(sample.line, /two hundred feet/);
+ if (sample.id === 'vivienne') assert.match(sample.line, /^Continue ahead when it is safe\./);
+ else assert.match(sample.line, /two hundred feet/);
  assert(!/meters|metres|bullshit|damn/i.test(sample.line));
  if (sample.mode === 'Adult') {
   assert.match(sample.line, /\[bleep\]/);
   assert.equal(sample.bleep.toneHz, 1000);
-  assert.equal(sample.bleep.toneSeconds, 0.38);
+  assert.equal(sample.bleep.toneSeconds, sample.id === 'vivienne' ? 0.4 : 0.38);
  } else assert.equal(sample.bleep, null);
 }
 function elem(attrs={}){
@@ -31,7 +32,7 @@ function parse(tag){
 const characters=[...html.matchAll(/<button[^>]*data-character="[^"]+"[^>]*>/g)].map(m=>parse(m[0]));
 const modes=[...html.matchAll(/<button[^>]*data-mode="[^"]+"[^>]*>/g)].filter(m=>!m[0].includes('data-character')).map(m=>parse(m[0]));
 assert.equal(characters.length,9);assert.equal(modes.length,3);assert.equal(characters.filter(c=>!c.hidden).length,3);
-const map=Object.fromEntries(['voice-card','sample-label','sample-line','sample-note'].map(id=>[id,elem()]));
+const map=Object.fromEntries(['voice-card','sample-label','sample-line','sample-note','sample-direction','sample-direction-label'].map(id=>[id,elem()]));
 let rejectLast;
 const audio={src:'',plays:0,pauses:0,pause(){this.pauses++},play(){this.plays++;return new Promise((yes,no)=>{rejectLast=no})}};
 map['mode-audio']=audio;
@@ -45,6 +46,8 @@ for(const [i,mode]of modes.entries()){
   assert(m);assert.equal(audio.src,'/media/voices/'+m.file);
   assert.equal(map['sample-label'].textContent,m.name+' · '+m.mode);
   assert.equal(map['sample-line'].textContent,'“'+m.line+'”');
+  assert.equal(map['sample-direction'].textContent,m.id==='vivienne'?'Continue ahead when it is safe.':'Left onto Main Street in 200 feet');
+  assert.equal(map['sample-direction-label'].textContent,m.id==='vivienne'?'GUIDANCE PREVIEW':'NEXT TURN');
   assert.equal(c.attrs['aria-pressed'],'true');
   assert.equal(characters.filter(x=>x.classList.contains('active')).length,1);
   audio.onplaying();assert(c.classList.contains('speaking'));assert(map['voice-card'].classList.contains('playing'));
