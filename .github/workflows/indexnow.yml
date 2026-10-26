@@ -9,7 +9,11 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      # Optional SEO notification: provider rejection must not fail the website workflow.
       - name: Notify search engines
+        id: indexnow
+        continue-on-error: true
+        timeout-minutes: 2
         shell: bash
         run: |
           KEY="8f1c6d2a9b7043e5a6d19c8f2b47e530"
@@ -31,3 +35,16 @@ jobs:
                 "https://unhingednav.com/privacy/"
               ]
             }'             https://api.indexnow.org/indexnow
+
+      - name: Report notification status
+        if: ${{ always() }}
+        shell: bash
+        env:
+          NOTIFY_OUTCOME: ${{ steps.indexnow.outcome }}
+        run: |
+          if [ "$NOTIFY_OUTCOME" = "success" ]; then
+            echo "IndexNow accepted the notification." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::IndexNow did not accept the notification. See the notification step for details; website deployment is independent."
+            echo "IndexNow notification unsuccessful. This optional SEO service remains non-blocking. Search-engine ownership verification still needs attention; see the notification logs." >> "$GITHUB_STEP_SUMMARY"
+          fi
