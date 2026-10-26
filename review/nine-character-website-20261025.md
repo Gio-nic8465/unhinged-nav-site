@@ -1,0 +1,11 @@
+# Nine actual app characters on the website — October 25, 2026
+
+Owner requested all actual app character profiles instead of the website-only preview recordings. This supersedes the earlier same-day Codependent-only preview repair.
+
+The homepage now presents the exact current app roster from lib/monsterFoundation.ts at app source 71e165e: Codependent — Brenda Borderline, Marty Martyr, HAL; Sarcastic — Graham Grudge, Roxie Razor, Raven Morrow; Adult — Frankie Fastlane, Rita Redline, Vivienne Vex. A mode selects its first sample, then each named character has its own playback button. No autoplay occurs on page load. Mode and character selection are exposed with aria-pressed, and inactive groups are hidden.
+
+All nine MP3s are existing generated Chatterbox Turbo direction samples. Each was matched byte-for-byte to the earlier generation receipt, then copied to media/voices. They speak the same neutral direction: “Turn left onto Main Street in two hundred meters.” They demonstrate voice identity; app character dialogue varies. They are not the exact later phone-preview utterances. Owner confirmed the nine app voice identities during phone acceptance; these exact direction clips previously had generation/format verification, not owner listening acceptance. No new synthesis request, payment, account, or live gateway change is required for website playback. Private conditioning/reference recordings and tokens were not published.
+
+Removed the old three website-only audio assets from the current site; retained in Git history and a verified complete-history pre-change bundle at Lab1 Documents/Unhinged-Nav-Backups/website-before-nine-characters-20261025.bundle. Baseline e5d2a327de1fb5664ababea1bec3cf51e9b194a1. media/voices/samples.json records names, grouping, source text, byte counts and SHA256 for the public demonstration clips.
+
+Before publication: node scripts/check-voice-samples.cjs passed all nine mappings and file hashes, three-group visibility, no autoplay, correct labels and selection, playback switching, stale callback isolation, completion and visible failure/retry. All inline JavaScript parsed; git diff --check passed. Live browser playback and layout acceptance are separate post-deployment checks. This website change makes no new Android readiness claim.

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "brenda",
+    "name": "Brenda Borderline",
+    "mode": "Codependent",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "brenda.mp3",
+    "bytes": 35712,
+    "sha256": "8ba4e220b3783693965300265affb30741291a6dea36bf7b1de5eb49bd403d46",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "marty",
+    "name": "Marty Martyr",
+    "mode": "Codependent",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "marty.mp3",
+    "bytes": 35136,
+    "sha256": "acd094655a02232a35f4b3e2fe905c48533b46cd083ac54a7ef969caf943a94f",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "hal",
+    "name": "HAL",
+    "mode": "Codependent",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "hal.mp3",
+    "bytes": 34272,
+    "sha256": "103ec75b9ae1f8c0109951592aeace21242f9143fd8132e3e4d45ef67a01fb85",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "graham",
+    "name": "Graham Grudge",
+    "mode": "Sarcastic",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "graham.mp3",
+    "bytes": 36576,
+    "sha256": "e37f5ab5d2465348f8caffe7eb3365bf29a2a7293589001fb3d9f6878ab903c7",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "roxie",
+    "name": "Roxie Razor",
+    "mode": "Sarcastic",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "roxie.mp3",
+    "bytes": 40032,
+    "sha256": "ec94a56383fd885299fda7edf8bb3ab2f9bcade1fa31d26aeb67116e068fba6f",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "raven",
+    "name": "Raven Morrow",
+    "mode": "Sarcastic",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "raven.mp3",
+    "bytes": 39456,
+    "sha256": "01e9080795328d476619c8e6858e836301158e931ea2e46516e17ace7038a339",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "frankie",
+    "name": "Frankie Fastlane",
+    "mode": "Adult",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "frankie.mp3",
+    "bytes": 33696,
+    "sha256": "e864ca3284172a54bcd03c23ff3067ad48750bac5ab79de4d76c6f5b9a586722",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "rita",
+    "name": "Rita Redline",
+    "mode": "Adult",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "rita.mp3",
+    "bytes": 38016,
+    "sha256": "f4db92960661163b5f95917559d7285cdb2f559904c5be664911477c51c1f34e",
+    "provider": "Chatterbox Turbo"
+  },
+  {
+    "id": "vivienne",
+    "name": "Vivienne Vex",
+    "mode": "Adult",
+    "line": "Turn left onto Main Street in two hundred meters.",
+    "file": "vivienne.mp3",
+    "bytes": 35424,
+    "sha256": "de05fa51ff3761cf93086fe9f235c645c19266af3dbfde8c870278e7cd170acc",
+    "provider": "Chatterbox Turbo"
+  }
+]

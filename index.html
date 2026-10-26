@@ -369,7 +369,7 @@
       }
       .mode-switch {
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 5px;
         margin-top: 0;
         margin-bottom: 10px;
@@ -400,6 +400,49 @@
       .audio-icon {
         font-size: 0.78rem;
         color: var(--gold);
+      }
+
+      .character-switch {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+        margin: 0 0 14px;
+      }
+      .character-switch button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-height: 76px;
+        padding: 10px 5px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--panel);
+        color: var(--cream);
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 850;
+        line-height: 1.3;
+        cursor: pointer;
+        overflow-wrap: anywhere;
+      }
+      .character-switch button[hidden] { display: none; }
+      .character-switch button.active {
+        border-color: var(--gold);
+        background: var(--panel2);
+        color: var(--gold);
+      }
+      .character-switch button.speaking .audio-icon {
+        animation: soundPulse 0.55s ease-in-out infinite alternate;
+      }
+      .mode-switch button:focus-visible,
+      .character-switch button:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .character-switch button.speaking .audio-icon { animation: none; }
       }
       .voice {
         background: var(--red);
@@ -1037,35 +1080,32 @@
       <section id="modes">
         <div class="wrap">
           <div class="section-head">
-            <h2>Same route. Three personalities.</h2>
-            <p>Clear directions. You decide how much attitude rides shotgun.</p>
+            <h2>Same route. Nine characters.</h2>
+            <p>Three modes. Nine app voices. Choose who rides shotgun.</p>
           </div>
           <div class="modes">
             <article class="mode">
               <div class="num">MODE CHOICE</div>
               <strong>Codependent</strong>
-              <p>Warm, overly invested, and aggressively helpful. “Turn right in 500 feet, sweetheart. You’re doing great. You still need me, right?”</p>
+              <p>Brenda Borderline · Marty Martyr · HAL. Warm, overly invested, and aggressively helpful.</p>
             </article>
             <article class="mode">
               <div class="num">MODE CHOICE</div>
               <strong>Sarcastic</strong>
-              <p>
-                “In 500 feet, take the next right—you know, the one you’re
-                probably about to miss.”
-              </p>
+              <p>Graham Grudge · Roxie Razor · Raven Morrow. Dry wit and sharp commentary.</p>
             </article>
             <article class="mode adult">
               <div class="num">MODE CHOICE</div>
               <strong>Adult</strong>
-              <p>“That’s right. It’s not a f***ing choice, stoonad.”</p>
+              <p>Frankie Fastlane · Rita Redline · Vivienne Vex. Bold, unfiltered personalities for adults.</p>
             </article>
           </div>
           <div class="phone" aria-label="Unhinged Nav guidance preview">
             <div class="phone-screen">
-              <div class="mode-demo-title">MEET THE MODES</div>
+              <div class="mode-demo-title">MEET THE CHARACTERS</div>
               <div class="route-card">
                 <small>NEXT TURN</small>
-                <p>Right in 500 feet</p>
+                <p>Left onto Main Street in 200 meters</p>
               </div>
               <div class="mode-choice-cue" aria-hidden="true">
                 <strong>CLICK TO HEAR</strong>
@@ -1073,42 +1113,32 @@
                   <span>↙</span><span>↓</span><span>↘</span>
                 </div>
               </div>
-              <div class="mode-switch" aria-label="Hear a sample mode">
-                <button
-                  type="button"
-                  data-mode="codependent"
-                  aria-label="Hear Codependent mode"
-                >
-                  <span class="audio-icon" aria-hidden="true">▶</span
-                  >Codependent</button
-                ><button
-                  type="button"
-                  data-mode="sarcastic"
-                  aria-label="Hear Sarcastic mode"
-                >
-                  <span class="audio-icon" aria-hidden="true">▶</span
-                  >Sarcastic</button
-                ><button
-                  type="button"
-                  class="active"
-                  data-mode="adult"
-                  aria-label="Hear Adult mode"
-                >
-                  <span class="audio-icon" aria-hidden="true">▶</span>Adult
-                </button>
+              <div class="mode-switch" aria-label="Choose a personality mode">
+                <button type="button" data-mode="codependent" aria-label="Choose Codependent mode" aria-pressed="true" class="active">Codependent</button>
+                <button type="button" data-mode="sarcastic" aria-label="Choose Sarcastic mode" aria-pressed="false">Sarcastic</button>
+                <button type="button" data-mode="adult" aria-label="Choose Adult mode" aria-pressed="false">Adult</button>
+              </div>
+              <div class="character-switch" aria-label="Hear a character voice">
+                <button type="button" data-character="brenda" data-mode="codependent" aria-label="Hear Brenda Borderline (Codependent)" aria-pressed="true" class="active"><span class="audio-icon" aria-hidden="true">▶</span><span>Brenda Borderline</span></button>
+                <button type="button" data-character="marty" data-mode="codependent" aria-label="Hear Marty Martyr (Codependent)" aria-pressed="false"><span class="audio-icon" aria-hidden="true">▶</span><span>Marty Martyr</span></button>
+                <button type="button" data-character="hal" data-mode="codependent" aria-label="Hear HAL (Codependent)" aria-pressed="false"><span class="audio-icon" aria-hidden="true">▶</span><span>HAL</span></button>
+                <button type="button" data-character="graham" data-mode="sarcastic" aria-label="Hear Graham Grudge (Sarcastic)" aria-pressed="false" hidden><span class="audio-icon" aria-hidden="true">▶</span><span>Graham Grudge</span></button>
+                <button type="button" data-character="roxie" data-mode="sarcastic" aria-label="Hear Roxie Razor (Sarcastic)" aria-pressed="false" hidden><span class="audio-icon" aria-hidden="true">▶</span><span>Roxie Razor</span></button>
+                <button type="button" data-character="raven" data-mode="sarcastic" aria-label="Hear Raven Morrow (Sarcastic)" aria-pressed="false" hidden><span class="audio-icon" aria-hidden="true">▶</span><span>Raven Morrow</span></button>
+                <button type="button" data-character="frankie" data-mode="adult" aria-label="Hear Frankie Fastlane (Adult)" aria-pressed="false" hidden><span class="audio-icon" aria-hidden="true">▶</span><span>Frankie Fastlane</span></button>
+                <button type="button" data-character="rita" data-mode="adult" aria-label="Hear Rita Redline (Adult)" aria-pressed="false" hidden><span class="audio-icon" aria-hidden="true">▶</span><span>Rita Redline</span></button>
+                <button type="button" data-character="vivienne" data-mode="adult" aria-label="Hear Vivienne Vex (Adult)" aria-pressed="false" hidden><span class="audio-icon" aria-hidden="true">▶</span><span>Vivienne Vex</span></button>
               </div>
               <div class="voice" id="voice-card" aria-live="polite">
-                <span id="sample-label">ADULT MODE</span>
-                <div id="sample-line">
-                  “That’s right. It’s not a f***ing choice, stoonad.”
-                </div>
+                <span id="sample-label">Brenda Borderline · Codependent</span>
+                <div id="sample-line">“Turn left onto Main Street in two hundred meters.”</div>
               </div>
-              <p id="sample-note" class="profanity-note hidden" aria-live="polite"></p>
+              <p id="sample-note" class="personality-note" aria-live="polite">Same direction. Nine real app voices. Character dialogue varies in the app.</p>
               <p class="profanity-note">
-                In the app, Adult Mode profanity will not be censored.
+                Adult Mode is optional, uncensored in the app, and intended for ages 18+.
               </p>
               <p class="personality-note">
-                This is one of many personality choices on Unhinged Nav.
+                Tap a mode, then choose any of its three characters.
               </p>
             </div>
           </div>
@@ -1332,65 +1362,116 @@
     <audio id="mode-audio" preload="none" aria-hidden="true"></audio>
     <script>
       const samples = {
-        codependent: {
-          label: "CODEPENDENT MODE",
-          line: "“Turn right in 500 feet, sweetheart. You’re doing great. You still need me, right?”",
-          src: "/codependent-female-preview.wav",
-          preview: true,
+        "brenda": {
+                "name": "Brenda Borderline",
+                "mode": "Codependent",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/brenda.mp3"
         },
-        sarcastic: {
-          label: "SARCASTIC MODE",
-          line: "“In 500 feet, take the next right—you know, the one you’re probably about to miss.”",
-          src: "/ny-copilot-sarcastic.mp3",
+        "marty": {
+                "name": "Marty Martyr",
+                "mode": "Codependent",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/marty.mp3"
         },
-        adult: {
-          label: "ADULT MODE",
-          line: "“That’s right. It’s not a f***ing choice, stoonad.”",
-          src: "/ny-copilot-adult-censored.mp3",
+        "hal": {
+                "name": "HAL",
+                "mode": "Codependent",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/hal.mp3"
         },
-      };
+        "graham": {
+                "name": "Graham Grudge",
+                "mode": "Sarcastic",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/graham.mp3"
+        },
+        "roxie": {
+                "name": "Roxie Razor",
+                "mode": "Sarcastic",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/roxie.mp3"
+        },
+        "raven": {
+                "name": "Raven Morrow",
+                "mode": "Sarcastic",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/raven.mp3"
+        },
+        "frankie": {
+                "name": "Frankie Fastlane",
+                "mode": "Adult",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/frankie.mp3"
+        },
+        "rita": {
+                "name": "Rita Redline",
+                "mode": "Adult",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/rita.mp3"
+        },
+        "vivienne": {
+                "name": "Vivienne Vex",
+                "mode": "Adult",
+                "line": "Turn left onto Main Street in two hundred meters.",
+                "src": "/media/voices/vivienne.mp3"
+        }
+};
       const voiceCard = document.getElementById("voice-card");
       const modeButtons = [...document.querySelectorAll(".mode-switch button")];
+      const characterButtons = [...document.querySelectorAll(".character-switch button")];
       const activeAudio = document.getElementById("mode-audio");
+      const note = document.getElementById("sample-note");
       let playbackId = 0;
       const finishAudio = () => {
         voiceCard.classList.remove("playing");
-        modeButtons.forEach((item) => item.classList.remove("speaking"));
+        characterButtons.forEach((item) => item.classList.remove("speaking"));
       };
+      const playCharacter = (button) => {
+        const currentPlayback = ++playbackId;
+        activeAudio.onplaying = activeAudio.onended = activeAudio.onerror = null;
+        activeAudio.pause();
+        finishAudio();
+        const sample = samples[button.dataset.character];
+        characterButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        document.getElementById("sample-label").textContent = sample.name + " · " + sample.mode;
+        document.getElementById("sample-line").textContent = "“" + sample.line + "”";
+        note.textContent = "Same direction. Nine real app voices. Character dialogue varies in the app.";
+        const finishCurrent = () => {
+          if (currentPlayback === playbackId) finishAudio();
+        };
+        const failCurrent = () => {
+          if (currentPlayback !== playbackId) return;
+          note.textContent = "Voice sample couldn’t play. Tap the character to try again.";
+          finishCurrent();
+        };
+        activeAudio.onplaying = () => {
+          if (currentPlayback !== playbackId) return;
+          button.classList.add("speaking");
+          voiceCard.classList.add("playing");
+        };
+        activeAudio.onended = finishCurrent;
+        activeAudio.onerror = failCurrent;
+        activeAudio.src = sample.src;
+        activeAudio.play().catch(failCurrent);
+      };
+      characterButtons.forEach((button) =>
+        button.addEventListener("click", () => playCharacter(button)),
+      );
       modeButtons.forEach((button) =>
         button.addEventListener("click", () => {
-          const currentPlayback = ++playbackId;
-          activeAudio.onplaying = activeAudio.onended = activeAudio.onerror = null;
-          activeAudio.pause();
-          finishAudio();
-          const sample = samples[button.dataset.mode];
-          modeButtons.forEach((item) => item.classList.remove("active"));
-          button.classList.add("active");
-          document.getElementById("sample-label").textContent = sample.label;
-          document.getElementById("sample-line").textContent = sample.line;
-          const note = document.getElementById("sample-note");
-          note.classList.toggle("hidden", !sample.preview);
-          note.textContent = sample.preview
-            ? "Neighbor Nancy — female preview voice. Final character recording coming soon."
-            : "";
-          const finishCurrent = () => {
-            if (currentPlayback === playbackId) finishAudio();
-          };
-          const failCurrent = () => {
-            if (currentPlayback !== playbackId) return;
-            note.classList.remove("hidden");
-            note.textContent = "Voice sample couldn’t play. Tap the mode to try again.";
-            finishCurrent();
-          };
-          activeAudio.onplaying = () => {
-            if (currentPlayback !== playbackId) return;
-            button.classList.add("speaking");
-            voiceCard.classList.add("playing");
-          };
-          activeAudio.onended = finishCurrent;
-          activeAudio.onerror = failCurrent;
-          activeAudio.src = sample.src;
-          activeAudio.play().catch(failCurrent);
+          const mode = button.dataset.mode;
+          modeButtons.forEach((item) => {
+            const selected = item === button;
+            item.classList.toggle("active", selected);
+            item.setAttribute("aria-pressed", String(selected));
+          });
+          characterButtons.forEach((item) => { item.hidden = item.dataset.mode !== mode; });
+          playCharacter(characterButtons.find((item) => item.dataset.mode === mode));
         }),
       );
       const betaDialog = document.getElementById("beta-download");
