@@ -11,6 +11,7 @@
   const paths = new Set(["/", "/features/", "/voice-navigation/", "/android-beta/", "/iphone/", "/safety/", "/privacy/", "/terms/", "/account-deletion/", "/philosophy/"]);
   const optedOut = navigator.globalPrivacyControl === true || navigator.doNotTrack === "1" || window.doNotTrack === "1";
   if (optedOut) {
+    console.info("Unhinged Nav: optional aggregate measurement disabled by browser privacy preference.");
     window.UnhingedNavMetrics = { track: function () {}, attribution: function () { return null; } };
     return;
   }
