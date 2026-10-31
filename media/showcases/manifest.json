@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "publicAdultBleeped": true,
+  "originalSpeechAndPictureTiming": true,
+  "modes": {
+    "codependent": {
+      "src": "/media/showcases/codependent-v1.mp4",
+      "poster": "/media/showcases/codependent-v1.jpg",
+      "duration": 15.021333,
+      "bytes": 667745,
+      "sha256": "d034453dce2fffd345764d7a1d9485faeea5b065be2df68f92fdc29b8593ae19",
+      "cast": [
+        {
+          "id": "brenda",
+          "name": "Brenda Borderline",
+          "line": "In two hundred feet, turn left onto Main Street. I packed reassurance for both of us.",
+          "start": 0,
+          "end": 4.24,
+          "sourceStart": 0.76,
+          "sourceEnd": 5,
+          "sourceSha256": "926ab513d9dd443e1fb7f0b2e95670fb6e6f06247e8a03fcb685f9214589fab1"
+        },
+        {
+          "id": "marty",
+          "name": "Marty Martyr",
+          "line": "In two hundred feet, turn left onto Main Street. I did all this planning. No need to thank me.",
+          "start": 4.24,
+          "end": 10.12,
+          "sourceStart": 0.76,
+          "sourceEnd": 6.64,
+          "sourceSha256": "ced98f16d4da0e5a8a2b995bc89baff2ae9a172305d3f3b24d67dfc2f6d45eb6"
+        },
+        {
+          "id": "hal",
+          "name": "HAL",
+          "line": "In two hundred feet, turn left onto Main Street. Your continued cooperation is comforting.",
+          "start": 10.12,
+          "end": 15.0,
+          "sourceStart": 0.72,
+          "sourceEnd": 5.6,
+          "sourceSha256": "301953731b6a257e7c98735e84d0739f3a99834477feb0958068fed9e914a6ad"
+        }
+      ]
+    },
+    "sarcastic": {
+      "src": "/media/showcases/sarcastic-v1.mp4",
+      "poster": "/media/showcases/sarcastic-v1.jpg",
+      "duration": 15.421333,
+      "bytes": 627931,
+      "sha256": "782b83565b7f4d306a5ef1551a1a9404ccb3966c81db6ae47f617fe8abd3d2d7",
+      "cast": [
+        {
+          "id": "graham",
+          "name": "Graham Grudge",
+          "line": "In two hundred feet, turn left onto Main Street. I have lowered my expectations accordingly.",
+          "start": 0,
+          "end": 5.64,
+          "sourceStart": 0.76,
+          "sourceEnd": 6.4,
+          "sourceSha256": "ebdb155a8a772c38209cb606dfacea842f96b535a3e27255de00ef28df35cd88"
+        },
+        {
+          "id": "roxie",
+          "name": "Roxie Razor",
+          "line": "In two hundred feet, turn left onto Main Street. Make it look intentional.",
+          "start": 5.64,
+          "end": 10.56,
+          "sourceStart": 0.76,
+          "sourceEnd": 5.68,
+          "sourceSha256": "bd82e8e40a55958fd8cfab9cbc6da27f2c54a7cdf07e9169172f62c90b3ed42d"
+        },
+        {
+          "id": "raven",
+          "name": "Raven Morrow",
+          "line": "In two hundred feet, turn left onto Main Street. Another small victory against chaos.",
+          "start": 10.56,
+          "end": 15.4,
+          "sourceStart": 0.76,
+          "sourceEnd": 5.6,
+          "sourceSha256": "7191a55149f8e755b70a25a03c2babcc01d3594c172c84a98e4b7137e2135061"
+        }
+      ]
+    },
+    "adult": {
+      "src": "/media/showcases/adult-v1.mp4",
+      "poster": "/media/showcases/adult-v1.jpg",
+      "duration": 18.541333,
+      "bytes": 787692,
+      "sha256": "a852ed97d719cb7da456141f2f25d6514223517fadf3ebec9c056a10145cfa88",
+      "cast": [
+        {
+          "id": "frankie",
+          "name": "Frankie Fastlane",
+          "line": "In two hundred feet, turn left onto Main Street. Keep the wheels steady and the [bleep] optional.",
+          "start": 0,
+          "end": 6.56,
+          "sourceStart": 0.76,
+          "sourceEnd": 7.32,
+          "sourceSha256": "9a4b47291f82edd62b0eb973cfe183df1c1d5a86d4540018ce1959a16581153b"
+        },
+        {
+          "id": "rita",
+          "name": "Rita Redline",
+          "line": "In two hundred feet, turn left onto Main Street. Eyes up. We can discuss your [bleep] decisions later.",
+          "start": 6.56,
+          "end": 13.8,
+          "sourceStart": 0.76,
+          "sourceEnd": 8,
+          "sourceSha256": "4656705260e7cbe6eccdd55a6ab86c4b50e85b3e7a8d9dbc524d64c70e9a0d6d"
+        },
+        {
+          "id": "vivienne",
+          "name": "Vivienne Vex",
+          "line": "Continue ahead when it is safe. A little composure. This is not a [bleep] audition.",
+          "start": 13.8,
+          "end": 18.52,
+          "sourceStart": 0.76,
+          "sourceEnd": 5.48,
+          "sourceSha256": "6364b2e5a2d54bbb78bb601b32ef866db250d0f6006ebf980217fc15e71eae76"
+        }
+      ]
+    }
+  }
+}

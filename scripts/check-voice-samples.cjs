@@ -33,10 +33,10 @@ const characters=[...html.matchAll(/<button[^>]*data-character="[^"]+"[^>]*>/g)]
 const modes=[...html.matchAll(/<button[^>]*data-mode="[^"]+"[^>]*>/g)].filter(m=>!m[0].includes('data-character')).map(m=>parse(m[0]));
 assert.equal(characters.length,9);assert.equal(modes.length,3);assert.equal(characters.filter(c=>!c.hidden).length,3);
 const map=Object.fromEntries(['voice-card','sample-label','sample-line','sample-note','sample-direction','sample-direction-label'].map(id=>[id,elem()]));
-let rejectLast;
+let rejectLast; const groupRequests=[];
 const audio={src:'',plays:0,pauses:0,pause(){this.pauses++},play(){this.plays++;return new Promise((yes,no)=>{rejectLast=no})}};
 map['mode-audio']=audio;
-vm.runInNewContext(html.slice(html.indexOf('      const samples ='),html.indexOf('      const betaDialog =')),{document:{getElementById:id=>map[id],querySelectorAll:s=>s==='.mode-switch button'?modes:characters}});
+vm.runInNewContext(html.slice(html.indexOf('      const samples ='),html.indexOf('      const betaDialog =')),{document:{getElementById:id=>map[id],querySelectorAll:s=>s==='.mode-switch button'?modes:characters,querySelector:()=>({scrollIntoView(){}})},window:{UnhingedShowcase:{selectMode:(...args)=>groupRequests.push(args)}}});
 assert.equal(audio.plays,0,'Never autoplay on page load');
 for(const [i,mode]of modes.entries()){
  mode.click();const visible=characters.filter(c=>!c.hidden);assert.equal(visible.length,3);assert(visible.every(c=>c.dataset.mode===mode.dataset.mode));
@@ -56,13 +56,14 @@ for(const [i,mode]of modes.entries()){
   assert.equal(b.length,m.bytes);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),m.sha256);
  }
 }
-modes[0].click();audio.onplaying();const staleReject=rejectLast,staleEnd=audio.onended;
-modes[1].click();audio.onplaying();staleEnd();staleReject(Error('cancelled'));
+characters[0].click();audio.onplaying();const staleReject=rejectLast,staleEnd=audio.onended;
+characters[3].click();audio.onplaying();staleEnd();staleReject(Error('cancelled'));
 setImmediate(()=>{
  assert(map['voice-card'].classList.contains('playing'),'stale callbacks cannot stop newer playback');
  audio.onerror();assert.match(map['sample-note'].textContent,/Tap the character/);assert(!map['voice-card'].classList.contains('playing'));
  characters[4].click();audio.onplaying();assert.match(map['sample-note'].textContent,/Nine app characters/);
  assert(map['voice-card'].classList.contains('playing'));audio.onended();
  for(const script of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))if(!script[0].includes('application/ld+json'))new vm.Script(script[1]);
+ assert.equal(groupRequests.length,3);assert(groupRequests.every(r=>r[1]===true),'mode buttons launch the three-character video');
  console.log('PASS: 9 characters, 3 mode groups, no autoplay/provider calls/system voice, all audio hashes, correct labels, selection, switching, stale callbacks, error/retry and completion; inline scripts parse.');
 });
