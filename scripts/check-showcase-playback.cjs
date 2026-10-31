@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+(async()=>{
+ const element=(dataset={})=>({dataset,textContent:'',disabled:false,events:{},classList:{toggle(){},remove(){}},setAttribute(){},addEventListener(type,fn){this.events[type]=fn},append(){},replaceChildren(){}});
+ const video=Object.assign(element(),{muted:true,paused:true,ended:false,error:null,currentTime:0,plays:0,loads:0,behavior:'reject',pause(){this.paused=true},load(){this.loads++;this.error=null},play(){this.plays++;this.paused=false;if(this.behavior==='reject')return Promise.reject(Error('NotAllowedError'));if(this.behavior==='pending')return new Promise((yes,no)=>{this.rejectOld=no});return Promise.resolve()}});
+ const status=element(),sound=element(),replay=element(),title=element(),transcript=element();
+ const nodes={'video':video,'[data-showcase-status]':status,'[data-showcase-sound]':sound,'[data-showcase-replay]':replay,'[data-showcase-title]':title,'[data-showcase-transcript]':transcript};
+ const root=element({showcase:'app'});root.querySelector=s=>nodes[s];root.querySelectorAll=()=>[];
+ const doc={hidden:false,events:{},querySelector:()=>root,querySelectorAll:()=>[],getElementById:()=>null,createElement:()=>element(),createTextNode:s=>s,addEventListener(type,fn){this.events[type]=fn}};
+ const win={matchMedia:()=>({matches:false}),addEventListener(){}};
+ const modes=Object.fromEntries(['codependent','sarcastic','adult'].map(mode=>[mode,{src:mode+'.mp4',poster:mode+'.jpg',cast:[{id:mode,name:mode,line:'A complete line.'}]}]));
+ vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../showcase.js'),'utf8'),{window:win,document:doc,location:{search:'?mode=sarcastic&sound=1'},URLSearchParams,AbortController,setTimeout,clearTimeout,fetch:async()=>({ok:true,json:async()=>({modes})})});
+ const flush=()=>new Promise(resolve=>setImmediate(resolve));await flush();
+ assert.equal(video.muted,true,'blocked sound resets to a silent state');assert.match(sound.textContent,/Watch & hear/);assert.match(status.textContent,/Tap Watch & hear/);
+ video.behavior='resolve';sound.events.click();await flush();assert.equal(video.muted,false);assert.equal(sound.textContent,'Mute sound');
+ video.behavior='pending';win.UnhingedShowcase.selectMode('adult',true);const rejectOld=video.rejectOld;
+ video.behavior='resolve';win.UnhingedShowcase.selectMode('codependent',true);rejectOld(Error('cancelled'));await flush();assert.equal(video.src,'codependent.mp4');assert.equal(video.muted,false,'stale rejected playback must not mute the new mode');
+ doc.hidden=true;doc.events.visibilitychange();assert.equal(video.paused,true);const plays=video.plays;win.UnhingedShowcase.selectMode('sarcastic',true);assert.equal(video.plays,plays,'hidden pages cannot restart audio');
+ doc.hidden=false;video.error={code:2};replay.events.click();await flush();assert.equal(video.loads,1,'manual retry reloads failed media');assert.equal(video.currentTime,0);
+ console.log('PASS: blocked-autoplay button recovery, gesture playback, rapid-switch stale rejection, hidden-page stop and manual media retry.');
+})().catch(error=>{console.error(error);process.exitCode=1});
