@@ -64,6 +64,7 @@ setImmediate(()=>{
  characters[4].click();audio.onplaying();assert.match(map['sample-note'].textContent,/Nine app characters/);
  assert(map['voice-card'].classList.contains('playing'));audio.onended();
  for(const script of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))if(!script[0].includes('application/ld+json'))new vm.Script(script[1]);
- assert.equal(groupRequests.length,3);assert(groupRequests.every(r=>r[1]===true),'mode buttons launch the three-character video');
+ assert.equal(groupRequests.length,3);assert(groupRequests.every(r=>r.length===1),'mode changes show cards without requesting autoplay');
  console.log('PASS: 9 characters, 3 mode groups, no autoplay/provider calls/system voice, all audio hashes, correct labels, selection, switching, stale callbacks, error/retry and completion; inline scripts parse.');
 });
+

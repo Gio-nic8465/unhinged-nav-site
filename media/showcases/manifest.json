@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "publicAdultBleeped": true,
   "originalSpeechAndPictureTiming": true,
   "modes": {
@@ -18,7 +18,15 @@
           "end": 4.24,
           "sourceStart": 0.76,
           "sourceEnd": 5,
-          "sourceSha256": "926ab513d9dd443e1fb7f0b2e95670fb6e6f06247e8a03fcb685f9214589fab1"
+          "sourceSha256": "926ab513d9dd443e1fb7f0b2e95670fb6e6f06247e8a03fcb685f9214589fab1",
+          "quote": "I packed reassurance for both of us.",
+          "image": "/media/characters/brenda.jpg",
+          "preview": {
+            "src": "/media/showcases/brenda-v2.mp4",
+            "poster": "/media/showcases/brenda-v2.jpg",
+            "sha256": "48ac51522211f738ebb9952ed073be89973976c8ae03a34e5129c68394ecf633",
+            "bytes": 252928
+          }
         },
         {
           "id": "marty",
@@ -28,7 +36,15 @@
           "end": 10.12,
           "sourceStart": 0.76,
           "sourceEnd": 6.64,
-          "sourceSha256": "ced98f16d4da0e5a8a2b995bc89baff2ae9a172305d3f3b24d67dfc2f6d45eb6"
+          "sourceSha256": "ced98f16d4da0e5a8a2b995bc89baff2ae9a172305d3f3b24d67dfc2f6d45eb6",
+          "quote": "I did all this planning. No need to thank me.",
+          "image": "/media/characters/marty.jpg",
+          "preview": {
+            "src": "/media/showcases/marty-v2.mp4",
+            "poster": "/media/showcases/marty-v2.jpg",
+            "sha256": "7b6cf6651e5db1a93124becb8e1d9ec43e06717d33b0950e58fad55f11703d6f",
+            "bytes": 285726
+          }
         },
         {
           "id": "hal",
@@ -38,7 +54,15 @@
           "end": 15.0,
           "sourceStart": 0.72,
           "sourceEnd": 5.6,
-          "sourceSha256": "301953731b6a257e7c98735e84d0739f3a99834477feb0958068fed9e914a6ad"
+          "sourceSha256": "301953731b6a257e7c98735e84d0739f3a99834477feb0958068fed9e914a6ad",
+          "quote": "Your continued cooperation is comforting.",
+          "image": "/media/characters/hal.jpg",
+          "preview": {
+            "src": "/media/showcases/hal-v2.mp4",
+            "poster": "/media/showcases/hal-v2.jpg",
+            "sha256": "bf6539d79ebd44b5351d6ff4a5d68dc8d603aa401e41d189d33e0a47f489c902",
+            "bytes": 198755
+          }
         }
       ]
     },
@@ -57,7 +81,15 @@
           "end": 5.64,
           "sourceStart": 0.76,
           "sourceEnd": 6.4,
-          "sourceSha256": "ebdb155a8a772c38209cb606dfacea842f96b535a3e27255de00ef28df35cd88"
+          "sourceSha256": "ebdb155a8a772c38209cb606dfacea842f96b535a3e27255de00ef28df35cd88",
+          "quote": "I have lowered my expectations accordingly.",
+          "image": "/media/characters/graham.jpg",
+          "preview": {
+            "src": "/media/showcases/graham-v2.mp4",
+            "poster": "/media/showcases/graham-v2.jpg",
+            "sha256": "03a1979884b182e1b7637edf862dc3f05e672732bd1c8a25623cba3e59f16ba1",
+            "bytes": 256964
+          }
         },
         {
           "id": "roxie",
@@ -67,7 +99,15 @@
           "end": 10.56,
           "sourceStart": 0.76,
           "sourceEnd": 5.68,
-          "sourceSha256": "bd82e8e40a55958fd8cfab9cbc6da27f2c54a7cdf07e9169172f62c90b3ed42d"
+          "sourceSha256": "bd82e8e40a55958fd8cfab9cbc6da27f2c54a7cdf07e9169172f62c90b3ed42d",
+          "quote": "Make it look intentional.",
+          "image": "/media/characters/roxie-approved.jpg",
+          "preview": {
+            "src": "/media/showcases/roxie-v2.mp4",
+            "poster": "/media/showcases/roxie-v2.jpg",
+            "sha256": "612bd1b95989073ac7d66b913b3bae8fe6fdd8f4cd288abc075f3a9fc525ffd4",
+            "bytes": 224847
+          }
         },
         {
           "id": "raven",
@@ -77,7 +117,15 @@
           "end": 15.4,
           "sourceStart": 0.76,
           "sourceEnd": 5.6,
-          "sourceSha256": "7191a55149f8e755b70a25a03c2babcc01d3594c172c84a98e4b7137e2135061"
+          "sourceSha256": "7191a55149f8e755b70a25a03c2babcc01d3594c172c84a98e4b7137e2135061",
+          "quote": "Another small victory against chaos.",
+          "image": "/media/characters/raven.jpg",
+          "preview": {
+            "src": "/media/showcases/raven-v2.mp4",
+            "poster": "/media/showcases/raven-v2.jpg",
+            "sha256": "23e1d668dcf1e2993744c38a498262109995c0aa6a0fb71d113c691dfcef75c4",
+            "bytes": 211976
+          }
         }
       ]
     },
@@ -96,7 +144,15 @@
           "end": 6.56,
           "sourceStart": 0.76,
           "sourceEnd": 7.32,
-          "sourceSha256": "9a4b47291f82edd62b0eb973cfe183df1c1d5a86d4540018ce1959a16581153b"
+          "sourceSha256": "9a4b47291f82edd62b0eb973cfe183df1c1d5a86d4540018ce1959a16581153b",
+          "quote": "Keep the wheels steady and the [bleep] optional.",
+          "image": "/media/characters/frankie.jpg",
+          "preview": {
+            "src": "/media/showcases/frankie-v2.mp4",
+            "poster": "/media/showcases/frankie-v2.jpg",
+            "sha256": "5edd61482fd6f98132d31ddc52f34cbe9661fc1dd6229e997ca2f01aaacbd46d",
+            "bytes": 302399
+          }
         },
         {
           "id": "rita",
@@ -106,7 +162,15 @@
           "end": 13.8,
           "sourceStart": 0.76,
           "sourceEnd": 8,
-          "sourceSha256": "4656705260e7cbe6eccdd55a6ab86c4b50e85b3e7a8d9dbc524d64c70e9a0d6d"
+          "sourceSha256": "4656705260e7cbe6eccdd55a6ab86c4b50e85b3e7a8d9dbc524d64c70e9a0d6d",
+          "quote": "Eyes up. We can discuss your [bleep] decisions later.",
+          "image": "/media/characters/rita.jpg",
+          "preview": {
+            "src": "/media/showcases/rita-v2.mp4",
+            "poster": "/media/showcases/rita-v2.jpg",
+            "sha256": "9fd6535c45400f1c9afdbb166b6a0f55524139c937cf82a1247e5ea0d49928b3",
+            "bytes": 289803
+          }
         },
         {
           "id": "vivienne",
@@ -116,7 +180,15 @@
           "end": 18.52,
           "sourceStart": 0.76,
           "sourceEnd": 5.48,
-          "sourceSha256": "6364b2e5a2d54bbb78bb601b32ef866db250d0f6006ebf980217fc15e71eae76"
+          "sourceSha256": "6364b2e5a2d54bbb78bb601b32ef866db250d0f6006ebf980217fc15e71eae76",
+          "quote": "A little composure. This is not a [bleep] audition.",
+          "image": "/media/characters/vivienne.jpg",
+          "preview": {
+            "src": "/media/showcases/vivienne-v2.mp4",
+            "poster": "/media/showcases/vivienne-v2.jpg",
+            "sha256": "c878cbb60bffe4726dc88112ffa24d5cdd661a1af0667ced8e4432dd3b5ef122",
+            "bytes": 288400
+          }
         }
       ]
     }
