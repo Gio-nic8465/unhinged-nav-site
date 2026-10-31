@@ -11,7 +11,7 @@
   const showCurrentLine = () => {
     const cast=manifest?.modes[selected]?.cast;
     if (!currentCaption || !cast) return;
-    const current=cast.find(c => video.currentTime >= c.start && video.currentTime < c.end) || (video.ended ? cast[cast.length-1] : cast[0]);
+    const current=[...cast].reverse().find(c => video.currentTime >= c.start) || cast[0];
     const text=current.name+': '+current.line;
     if (currentCaption.textContent !== text) currentCaption.textContent=text;
   };
