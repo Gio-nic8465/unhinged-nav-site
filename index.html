@@ -1049,6 +1049,13 @@
         .welcome-grid .actions{order:6;margin-top:6px}
         .welcome-grid details{order:7}
       }
+
+.character-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch;margin:16px auto;max-width:760px}
+.picker-card{font:inherit;display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;background:#151116;border:1px solid #665437;border-radius:14px;color:#f7f0df;cursor:pointer;min-width:0}
+.picker-card[hidden]{display:none}.picker-card[aria-pressed="true"]{border-color:#f1c550;background:#541326}.picker-card img{width:100%;height:200px;object-fit:cover;object-position:top;border-radius:8px}.picker-card strong{color:#f1c550;font-size:19px;line-height:1.2;min-height:46px}.picker-card q{font-size:16px;line-height:1.4;min-height:90px}.picker-card span{color:#f1c550;font-size:13px;font-weight:800;margin-top:auto}.picker-card:focus-visible{outline:3px solid #f1c550;outline-offset:3px}
+.preview-caption{height:88px;overflow:auto;font-size:16px;line-height:22px}.preview-controls{display:flex;gap:8px;justify-content:center}.preview-controls button{font:700 15px system-ui;min-height:46px;padding:8px 16px;border-radius:9px;border:1px solid #f1c550;background:#f1c550;color:#0b090c}.preview-dialog{width:min(480px,calc(100% - 24px));max-height:94vh;padding:16px;border:1px solid #f1c550;border-radius:16px;background:#0b090c;color:#f7f0df}.preview-dialog::backdrop{background:#000b}.preview-dialog video{display:block;width:100%;height:43vh;object-fit:contain;background:#0b090c}.preview-dialog h3{margin:8px 0;color:#f1c550}.preview-close{display:block;margin-left:auto;min-height:44px;padding:8px 12px;font:700 16px system-ui;background:#151116;border:1px solid #f1c550;border-radius:8px;color:#f1c550}
+@media(max-width:700px){.character-picker{gap:6px;margin:12px 0}.picker-card{padding:7px;gap:7px}.picker-card img{height:125px}.picker-card strong{font-size:14px;min-height:34px}.picker-card q{font-size:12px;line-height:17px;min-height:85px}.picker-card span{font-size:11px}.welcome-picker h2{font-size:1.7rem;margin:8px 0}.welcome-picker .showcase-modes{max-width:100%;margin:12px 0}.welcome-picker{padding:18px 0}.welcome-picker .actions{margin-top:12px}.welcome-picker .eyebrow{font-size:.7rem}.welcome-picker p{font-size:14px;margin:8px 0}}
+@media(max-width:700px) and (max-height:700px){.picker-card img{height:80px}.welcome-picker h2{font-size:1.45rem}.character-picker{margin:8px 0}}
     </style>
     <script defer src="/marketing-events.js"></script>
     <script defer src="/showcase.js"></script>
@@ -1077,34 +1084,15 @@
       </div>
     </header>
     <main id="top">
-      <section class="welcome-showcase" data-showcase="website" aria-label="Meet your copilots">
-        <div class="wrap welcome-grid">
-          <div>
-            <div class="eyebrow">MEET YOUR COPILOTS</div>
-            <h2>Your GPS has a personality.<br>Pick yours.</h2>
-            <p>Nine characters. Three kinds of attitude. See them, hear them, then choose who rides shotgun.</p>
-            <div class="showcase-modes" aria-label="Watch a three-character introduction">
-              <button type="button" data-showcase-mode="codependent" aria-pressed="true">Codependent</button>
-              <button type="button" data-showcase-mode="sarcastic" aria-pressed="false">Sarcastic</button>
-              <button type="button" data-showcase-mode="adult" aria-pressed="false">Adult · bleeped</button>
-            </div>
-            <div class="showcase-controls">
-              <button type="button" class="btn" data-showcase-sound disabled>▶ Watch &amp; hear the characters</button>
-              <button type="button" class="btn btn-secondary" data-showcase-replay disabled>Replay</button>
-            </div>
-            <p data-showcase-status role="status">Loading a silent preview. Tap Watch &amp; hear for sound.</p>
-            <p data-showcase-title>Brenda Borderline / Marty Martyr / HAL</p>
-            <div class="actions" style="justify-content:flex-start">
-              <button type="button" class="btn btn-primary button-reset" data-open-beta>JOIN THE FREE BETA</button>
-              <button type="button" class="btn btn-secondary button-reset" data-showcase-skip>Skip preview</button>
-            </div>
-            <p>U.S. Android beta · Ages 18+ · iPhone waitlist available</p>
-            <details><summary>Read the character dialogue</summary><div data-showcase-transcript></div></details>
-            <p><small>AI characters and voices. Public Adult language is bleeped. Navigation setup belongs while parked.</small></p>
-          </div>
-          <div class="showcase-frame"><video playsinline webkit-playsinline controls muted preload="metadata" poster="/media/showcases/codependent-v1.jpg" aria-label="Watch the three Codependent characters"></video><p data-showcase-current aria-live="polite" style="padding:12px 14px;font-size:16px;line-height:1.5;color:var(--cream)"></p></div>
-        </div>
-      </section>
+      <section class="welcome-showcase welcome-picker" data-showcase="website" aria-label="Meet your copilots"><div class="wrap" style="max-width:900px;text-align:center"><div class="eyebrow">MEET YOUR COPILOTS</div><h2>Choose your copilot.</h2><p>Tap a mode. Meet three personalities. Tap a face to watch and hear.</p><div class="showcase-modes" style="max-width:550px;margin-left:auto;margin-right:auto" aria-label="Show three character pictures"><button type="button" data-showcase-mode="codependent" aria-pressed="true">Codependent</button><button type="button" data-showcase-mode="sarcastic" aria-pressed="false">Sarcastic</button><button type="button" data-showcase-mode="adult" aria-pressed="false">Adult · bleeped</button></div><div class="character-picker" data-character-picker aria-label="Three character pictures and quotes"><button type="button" class="picker-card" data-showcase-character="brenda" data-showcase-group="codependent" aria-label="Watch and hear Brenda Borderline" aria-pressed="false"><img src="/media/characters/brenda.jpg" width="180" height="240" alt="" loading="eager"><strong>Brenda Borderline</strong><q>I packed reassurance for both of us.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="marty" data-showcase-group="codependent" aria-label="Watch and hear Marty Martyr" aria-pressed="false"><img src="/media/characters/marty.jpg" width="180" height="240" alt="" loading="eager"><strong>Marty Martyr</strong><q>I did all this planning. No need to thank me.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="hal" data-showcase-group="codependent" aria-label="Watch and hear HAL" aria-pressed="false"><img src="/media/characters/hal.jpg" width="180" height="240" alt="" loading="eager"><strong>HAL</strong><q>Your continued cooperation is comforting.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="graham" data-showcase-group="sarcastic" aria-label="Watch and hear Graham Grudge" aria-pressed="false" hidden><img src="/media/characters/graham.jpg" width="180" height="240" alt="" loading="lazy"><strong>Graham Grudge</strong><q>I have lowered my expectations accordingly.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="roxie" data-showcase-group="sarcastic" aria-label="Watch and hear Roxie Razor" aria-pressed="false" hidden><img src="/media/characters/roxie-approved.jpg" width="180" height="240" alt="" loading="lazy"><strong>Roxie Razor</strong><q>Make it look intentional.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="raven" data-showcase-group="sarcastic" aria-label="Watch and hear Raven Morrow" aria-pressed="false" hidden><img src="/media/characters/raven.jpg" width="180" height="240" alt="" loading="lazy"><strong>Raven Morrow</strong><q>Another small victory against chaos.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="frankie" data-showcase-group="adult" aria-label="Watch and hear Frankie Fastlane" aria-pressed="false" hidden><img src="/media/characters/frankie.jpg" width="180" height="240" alt="" loading="lazy"><strong>Frankie Fastlane</strong><q>Keep the wheels steady and the [bleep] optional.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="rita" data-showcase-group="adult" aria-label="Watch and hear Rita Redline" aria-pressed="false" hidden><img src="/media/characters/rita.jpg" width="180" height="240" alt="" loading="lazy"><strong>Rita Redline</strong><q>Eyes up. We can discuss your [bleep] decisions later.</q><span>▶ Hear me</span></button>
+<button type="button" class="picker-card" data-showcase-character="vivienne" data-showcase-group="adult" aria-label="Watch and hear Vivienne Vex" aria-pressed="false" hidden><img src="/media/characters/vivienne.jpg" width="180" height="240" alt="" loading="lazy"><strong>Vivienne Vex</strong><q>A little composure. This is not a [bleep] audition.</q><span>▶ Hear me</span></button></div><p data-showcase-status role="status">Tap a face to hear the attitude. One character at a time.</p><div class="actions"><button type="button" class="btn btn-primary button-reset" data-open-beta>JOIN THE FREE BETA</button></div><p><small>U.S. Android beta · Ages 18+ · iPhone waitlist available. AI characters and voices.</small></p><dialog class="preview-dialog" data-preview-dialog><button type="button" class="preview-close" data-preview-close>Close preview</button><h3 data-showcase-title>Character preview</h3><video playsinline webkit-playsinline preload="none" aria-label="Character speaking preview"></video><p class="preview-caption" data-showcase-current aria-live="polite"></p><div class="preview-controls"><button type="button" data-showcase-pause>Play</button><button type="button" data-showcase-sound>Mute</button><button type="button" data-showcase-replay>Replay</button></div></dialog></div></section>
 
       <div class="wrap hero">
         <div class="hero-copy">
@@ -1558,8 +1546,7 @@
           });
           characterButtons.forEach((item) => { item.hidden = item.dataset.mode !== mode; });
           activeAudio.pause(); finishAudio();
-          window.UnhingedShowcase?.selectMode(mode, true);
-          document.querySelector("[data-showcase]").scrollIntoView({ behavior: "smooth" });
+          window.UnhingedShowcase?.selectMode(mode);
         }),
       );
       const betaDialog = document.getElementById("beta-download");
