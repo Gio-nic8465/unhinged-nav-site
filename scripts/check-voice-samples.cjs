@@ -67,4 +67,3 @@ setImmediate(()=>{
  assert.equal(groupRequests.length,3);assert(groupRequests.every(r=>r.length===1),'mode changes show cards without requesting autoplay');
  console.log('PASS: 9 characters, 3 mode groups, no autoplay/provider calls/system voice, all audio hashes, correct labels, selection, switching, stale callbacks, error/retry and completion; inline scripts parse.');
 });
-
