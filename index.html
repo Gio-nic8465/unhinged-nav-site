@@ -1034,6 +1034,21 @@
       .welcome-showcase summary{min-height:44px;cursor:pointer;color:var(--gold)}
       .welcome-showcase button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
       @media(max-width:700px){.welcome-grid{grid-template-columns:1fr;gap:18px}.welcome-showcase h2{margin-bottom:12px}.showcase-frame{max-width:380px;margin:auto}.welcome-showcase .showcase-frame video{max-height:53vh}.showcase-modes{margin:12px 0}.welcome-showcase{padding-top:18px}}
+
+      @media(max-width:700px){
+        .welcome-grid{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+        .welcome-grid>div:first-child{display:contents}
+        .welcome-grid .eyebrow{order:0}
+        .welcome-grid h2{order:1;font-size:1.85rem;line-height:1.05;margin:0}
+        .welcome-grid .showcase-modes{order:2;margin:0}
+        .welcome-grid .showcase-controls{order:3;margin:0}
+        .welcome-grid .showcase-controls .btn{font-size:14px;padding:0 12px}
+        .welcome-grid .showcase-frame{order:4;max-width:280px;width:100%;margin:0 auto}
+        .welcome-grid .showcase-frame video{max-height:38vh}
+        .welcome-grid p{order:5;margin:0}
+        .welcome-grid .actions{order:6;margin-top:6px}
+        .welcome-grid details{order:7}
+      }
     </style>
     <script defer src="/marketing-events.js"></script>
     <script defer src="/showcase.js"></script>
