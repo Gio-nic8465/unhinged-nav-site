@@ -6,7 +6,7 @@
   const STORAGE_KEY = "unhinged_nav_campaign_v1";
   const sources = new Set(["facebook", "instagram", "tiktok", "youtube", "chatgpt", "organic_social", "direct", "other", "test"]);
   const media = new Set(["short_video", "organic_social", "bio", "referral", "direct", "test"]);
-  const campaigns = new Set(["first-wave", "retention_brenda_20261102", "retention_graham_20261102", "retention_marty_20261102", "personality_battle", "qa_signup_20261030", "other"]);
+  const campaigns = new Set(["first-wave", "retention_brenda_20261102", "retention_graham_20261102", "retention_marty_20261102", "personality_battle", "retention_hal_20261101", "retention_roxie_20261103", "qa_signup_20261030", "other"]);
   const events = new Set(["page_view", "signup_open", "signup_submit", "signup_success", "signup_duplicate", "signup_error"]);
   const paths = new Set(["/", "/features/", "/voice-navigation/", "/android-beta/", "/iphone/", "/safety/", "/privacy/", "/terms/", "/account-deletion/", "/philosophy/"]);
   const optedOut = navigator.globalPrivacyControl === true || navigator.doNotTrack === "1" || window.doNotTrack === "1";

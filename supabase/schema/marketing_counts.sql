@@ -5,7 +5,7 @@ create table public.marketing_daily_counts (
   path text not null check (path in ('/','/features/','/voice-navigation/','/android-beta/','/iphone/','/safety/','/privacy/','/terms/','/account-deletion/','/philosophy/','/other/')),
   source text not null check (source in ('facebook','instagram','tiktok','youtube','chatgpt','organic_social','direct','other','test')),
   medium text not null check (medium in ('short_video','organic_social','bio','referral','direct','test')),
-  campaign text not null check (campaign in ('first-wave','retention_brenda_20261102','retention_graham_20261102','retention_marty_20261102','personality_battle','qa_signup_20261030','other')),
+  campaign text not null check (campaign in ('first-wave','retention_brenda_20261102','retention_graham_20261102','retention_marty_20261102','personality_battle','retention_hal_20261101','retention_roxie_20261103','qa_signup_20261030','other')),
   events bigint not null default 1 check (events > 0),
   primary key (day,event,path,source,medium,campaign)
 );

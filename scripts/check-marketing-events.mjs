@@ -37,6 +37,13 @@ for (const navigator of [{ doNotTrack: '1' }, { globalPrivacyControl: true }]) {
 }
 assert.doesNotThrow(() => client({ failFetch: true }).metrics.track('signup_open'));
 
+for (const campaign of ['retention_hal_20261101','retention_roxie_20261103']) {
+  c=client({search:'?utm_source=organic_social&utm_medium=short_video&utm_campaign='+campaign});
+  const event=JSON.parse(c.calls[0].body);
+  assert.equal(event.campaign,campaign,'new creatives keep distinct attribution');
+  assert.equal(event.source,'organic_social');
+}
+
 let requests = [];
 const handler = createHandler({ env: key => ({ SUPABASE_SERVICE_ROLE_KEY: 'SERVER_ONLY', SUPABASE_URL: 'https://project.example' })[key],
   fetchImpl: async (url, options) => { requests.push({ url, ...options }); return new Response(null, { status: 204 }); } });
@@ -57,6 +64,11 @@ assert.equal((await handler(new Request('https://edge.example', { method: 'OPTIO
 const broken = createHandler({ env: () => 'configured', fetchImpl: async () => { throw Error('private internal error'); } });
 assert.equal((await broken(request())).status, 503);
 assert.equal(requests.length, 1, 'invalid events never write counts');
+for (const campaign of ['retention_hal_20261101','retention_roxie_20261103']) {
+  assert.equal((await handler(request({...good,campaign}))).status,204);
+  assert.equal(JSON.parse(requests.at(-1).body).p_campaign,campaign,'server preserves the accepted campaign');
+}
+
 
 // Exercise real signup-handler success and failure without transmitting form values.
 async function signup(ok, withMetrics = true, duplicate = false, phoneType = 'Android', country = 'USA') {
