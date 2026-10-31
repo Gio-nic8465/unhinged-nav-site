@@ -1,0 +1,16 @@
+{
+    "characterId":  "roxie",
+    "name":  "Roxie Razor",
+    "mode":  "Sarcastic",
+    "approvedOn":  "2026-10-30",
+    "referencePromoSha256":  "b6c7e12f48cf3fed19285339cb4edcfec648ffce34dd0eafb7563c7ea3461cc0",
+    "referencePromoFrameSeconds":  0.4,
+    "matchingPerformanceFrameSeconds":  1.28,
+    "portraitSha256":  "248dd1e25ba7ed45a17f3fc8c11396e39f1fb3d4231dea3996bf04012ad08450",
+    "portraitSize":  [
+                         240,
+                         320
+                     ],
+    "voiceChanged":  false,
+    "note":  "Use this exact approved animated-performance identity and tighter face framing for future assets. Preserve character ID, voice and lip-sync. Historical media retained as superseded."
+}
