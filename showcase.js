@@ -20,12 +20,14 @@
   const play = (audible, restart = false) => {
     if (document.hidden) return;
     const id = ++generation;
+    if (video.error) video.load();
     if (restart) video.currentTime = 0;
     video.muted = !audible;
     updateSound();
     status.textContent = audible ? 'Playing with sound. Captions are included.' : 'Silent preview. Tap Watch & hear for sound.';
     video.play().catch(() => {
       if (id !== generation) return;
+      video.muted = true; updateSound();
       status.textContent = 'Tap Watch & hear to start playback. You can still read every line below.';
       tellApp('blocked');
     });
