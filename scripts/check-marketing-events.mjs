@@ -59,13 +59,13 @@ assert.equal((await broken(request())).status, 503);
 assert.equal(requests.length, 1, 'invalid events never write counts');
 
 // Exercise real signup-handler success and failure without transmitting form values.
-async function signup(ok, withMetrics = true, duplicate = false) {
+async function signup(ok, withMetrics = true, duplicate = false, phoneType = 'Android', country = 'USA') {
   const listeners = {}; const events = []; const sent = [];
   const classes = () => ({ add() {}, remove() {} });
   const submit = { disabled: false, textContent: '' };
-  const form = { querySelector: () => submit, elements: { phoneType: { value: 'Android' } }, reset() { this.resetCalled = true; }, addEventListener: (name, fn) => { listeners[name] = fn; } };
+  const form = { querySelector: () => submit, elements: { phoneType: { value: phoneType }, country: { value: country } }, reset() { this.resetCalled = true; }, addEventListener: (name, fn) => { listeners[name] = fn; } };
   const dialog = { open: false, showModal() { this.open = true; } };
-  const elements = { 'beta-download': dialog, 'beta-form': form, 'signup-content': { classList: classes() }, 'signup-success': { classList: classes() }, 'form-message': { classList: classes() }, 'signup-confirmation': {} };
+  const elements = { 'beta-download': dialog, 'beta-form': form, 'signup-content': { classList: classes() }, 'signup-success': { classList: classes() }, 'form-message': { classList: classes() }, 'signup-confirmation': {}, 'android-beta-enrollment': { hidden: true } };
   const window = { location: { hash: '#beta', search: '' }, addEventListener: (name, fn) => { listeners[name] = fn; } };
   if (withMetrics) window.UnhingedNavMetrics = { track: event => events.push(event), attribution: () => ({ source: 'instagram', medium: 'bio', campaign: 'retention_brenda_20261102' }) };
   const body = html.slice(html.indexOf('      const betaDialog ='), html.lastIndexOf('    </script>'));
@@ -82,8 +82,22 @@ async function signup(ok, withMetrics = true, duplicate = false) {
     assert.equal(sent[0].utm_source, 'instagram');
   }
   assert.equal(!!form.resetCalled, ok);
+  return { stepsHidden: elements['android-beta-enrollment'].hidden, confirmation: elements['signup-confirmation'].textContent };
 }
 await signup(true); await signup(false); await signup(true, false); await signup(true, true, true);
+for (const country of ['US', 'USA', ' United States ', 'U.S.A.', 'United States of America']) {
+  assert.equal((await signup(true, true, false, 'Android', country)).stepsHidden, false, `${country}: enrollment is actionable after success`);
+}
+assert.equal((await signup(false)).stepsHidden, true, 'a failed save never opens enrollment');
+const iphone = await signup(true, true, false, 'iPhone', 'USA');
+assert.equal(iphone.stepsHidden, true); assert.match(iphone.confirmation, /iPhone waitlist/);
+for (const country of ['Panama', 'Costa Rica', 'Russia', 'Australia']) {
+  const otherRegion = await signup(true, true, false, 'Android', country);
+  assert.equal(otherRegion.stepsHidden, true); assert.match(otherRegion.confirmation, /current Google Play test is for U.S./);
+}
+assert(html.includes('https://groups.google.com/g/unhinged-nav-android-beta'));
+assert(html.includes('https://play.google.com/apps/testing/com.unhingednav.app'));
+assert(html.includes('Character voices need account activation.'));
 for (const s of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)) if (!s[0].includes('application/ld+json')) new vm.Script(s[1]);
 assert(html.includes('data-open-beta>JOIN THE BETA WAITLIST'), 'bottom signup CTA exists');
 console.log('PASS: anonymous aggregates, attribution, privacy signals, failure isolation, gateway/CORS boundaries, body limits, success/error reporting, #beta signup and blocked-metrics fallback.');
