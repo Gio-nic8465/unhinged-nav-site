@@ -1015,8 +1015,28 @@
       #beta-download .beta-tester-info { padding:16px; }
       #beta-download .beta-tester-info summary { cursor:pointer; color:#f1c550; font-weight:700; line-height:1.5; }
       @media(max-width:480px) { .beta-tester-info { padding:18px; } #beta-download { padding:20px; } }
+
+      .welcome-showcase{padding:24px 0 40px;border-bottom:1px solid var(--line)}
+      .welcome-grid{display:grid;grid-template-columns:1fr minmax(280px,420px);gap:36px;align-items:center}
+      .welcome-showcase h2{font-size:clamp(2.1rem,5vw,4.3rem);line-height:1.02;letter-spacing:-.045em;margin:8px 0 18px}
+      .welcome-showcase p{color:var(--muted)}
+      .showcase-modes,.showcase-controls{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+      .showcase-modes button{flex:1;min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--gold);font:800 15px system-ui;cursor:pointer}
+      .showcase-modes button[aria-pressed="true"]{border-color:var(--gold);background:#541326}
+      .showcase-frame{border:1px solid #665437;border-radius:18px;overflow:hidden;background:var(--ink)}
+      .showcase-frame video{display:block;width:100%;aspect-ratio:16/21;object-fit:contain;background:var(--ink)}
+      .showcase-controls button{min-height:48px;font:800 15px system-ui;cursor:pointer}
+      .showcase-controls button:first-child{flex:1;background:var(--gold);color:var(--ink);border-color:var(--gold)}
+      .showcase-controls button:disabled{opacity:.65}
+      [data-showcase-title]{font-size:1rem;color:var(--gold);font-weight:800}
+      [data-showcase-status]{min-height:3em;font-size:.9rem}
+      .welcome-showcase details{border-top:1px solid var(--line);padding-top:8px}
+      .welcome-showcase summary{min-height:44px;cursor:pointer;color:var(--gold)}
+      .welcome-showcase button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+      @media(max-width:700px){.welcome-grid{grid-template-columns:1fr;gap:18px}.welcome-showcase h2{margin-bottom:12px}.showcase-frame{max-width:380px;margin:auto}.welcome-showcase .showcase-frame video{max-height:53vh}.showcase-modes{margin:12px 0}.welcome-showcase{padding-top:18px}}
     </style>
     <script defer src="/marketing-events.js"></script>
+    <script defer src="/showcase.js"></script>
   </head>
   <body>
     <header class="topbar">
@@ -1042,6 +1062,35 @@
       </div>
     </header>
     <main id="top">
+      <section class="welcome-showcase" data-showcase="website" aria-label="Meet your copilots">
+        <div class="wrap welcome-grid">
+          <div>
+            <div class="eyebrow">MEET YOUR COPILOTS</div>
+            <h2>Your GPS has a personality.<br>Pick yours.</h2>
+            <p>Nine characters. Three kinds of attitude. See them, hear them, then choose who rides shotgun.</p>
+            <div class="showcase-modes" aria-label="Watch a three-character introduction">
+              <button type="button" data-showcase-mode="codependent" aria-pressed="true">Codependent</button>
+              <button type="button" data-showcase-mode="sarcastic" aria-pressed="false">Sarcastic</button>
+              <button type="button" data-showcase-mode="adult" aria-pressed="false">Adult · bleeped</button>
+            </div>
+            <div class="showcase-controls">
+              <button type="button" class="btn" data-showcase-sound disabled>▶ Watch &amp; hear the characters</button>
+              <button type="button" class="btn btn-secondary" data-showcase-replay disabled>Replay</button>
+            </div>
+            <p data-showcase-status role="status">Loading a silent preview. Tap Watch &amp; hear for sound.</p>
+            <p data-showcase-title>Brenda Borderline / Marty Martyr / HAL</p>
+            <div class="actions" style="justify-content:flex-start">
+              <button type="button" class="btn btn-primary button-reset" data-open-beta>JOIN THE FREE BETA</button>
+              <button type="button" class="btn btn-secondary button-reset" data-showcase-skip>Skip preview</button>
+            </div>
+            <p>U.S. Android beta · Ages 18+ · iPhone waitlist available</p>
+            <details><summary>Read the character dialogue</summary><div data-showcase-transcript></div></details>
+            <p><small>AI characters and voices. Public Adult language is bleeped. Navigation setup belongs while parked.</small></p>
+          </div>
+          <div class="showcase-frame"><video playsinline webkit-playsinline controls muted preload="metadata" poster="/media/showcases/codependent-v1.jpg" aria-label="Watch the three Codependent characters"></video></div>
+        </div>
+      </section>
+
       <div class="wrap hero">
         <div class="hero-copy">
           <h1>
@@ -1493,7 +1542,9 @@
             item.setAttribute("aria-pressed", String(selected));
           });
           characterButtons.forEach((item) => { item.hidden = item.dataset.mode !== mode; });
-          playCharacter(characterButtons.find((item) => item.dataset.mode === mode));
+          activeAudio.pause(); finishAudio();
+          window.UnhingedShowcase?.selectMode(mode, true);
+          document.querySelector("[data-showcase]").scrollIntoView({ behavior: "smooth" });
         }),
       );
       const betaDialog = document.getElementById("beta-download");
