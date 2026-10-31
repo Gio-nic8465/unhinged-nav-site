@@ -3,7 +3,7 @@ const EVENTS = new Set(["page_view", "signup_open", "signup_submit", "signup_suc
 const PATHS = new Set(["/", "/features/", "/voice-navigation/", "/android-beta/", "/iphone/", "/safety/", "/privacy/", "/terms/", "/account-deletion/", "/philosophy/", "/other/"]);
 const SOURCES = new Set(["facebook", "instagram", "tiktok", "youtube", "chatgpt", "organic_social", "direct", "other", "test"]);
 const MEDIA = new Set(["short_video", "organic_social", "bio", "referral", "direct", "test"]);
-const CAMPAIGNS = new Set(["first-wave", "retention_brenda_20261102", "retention_graham_20261102", "retention_marty_20261102", "personality_battle", "qa_signup_20261030", "other"]);
+const CAMPAIGNS = new Set(["first-wave", "retention_brenda_20261102", "retention_graham_20261102", "retention_marty_20261102", "personality_battle", "retention_hal_20261101", "retention_roxie_20261103", "qa_signup_20261030", "other"]);
 export function validateEvent(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   if (Object.keys(value).some(key => !["event", "path", "source", "medium", "campaign"].includes(key))) return null;
