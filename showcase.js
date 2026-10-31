@@ -7,6 +7,14 @@
   const replay = root.querySelector('[data-showcase-replay]');
   const title = root.querySelector('[data-showcase-title]');
   const transcript = root.querySelector('[data-showcase-transcript]');
+  const currentCaption = root.querySelector('[data-showcase-current]');
+  const showCurrentLine = () => {
+    const cast=manifest?.modes[selected]?.cast;
+    if (!currentCaption || !cast) return;
+    const current=cast.find(c => video.currentTime >= c.start && video.currentTime < c.end) || (video.ended ? cast[cast.length-1] : cast[0]);
+    const text=current.name+': '+current.line;
+    if (currentCaption.textContent !== text) currentCaption.textContent=text;
+  };
   const buttons = [...root.querySelectorAll('[data-showcase-mode]')];
   const params = new URLSearchParams(location.search);
   const embedded = root.dataset.showcase === 'app';
@@ -37,6 +45,7 @@
     if (!manifest.modes[mode]) return;
     pause(); selected = mode;
     const data = manifest.modes[mode];
+    if (currentCaption) currentCaption.textContent=data.cast[0].name+': '+data.cast[0].line;
     title.textContent = mode[0].toUpperCase()+mode.slice(1)+' · '+data.cast.map(c => c.name).join(' / ');
     transcript.replaceChildren(...data.cast.map(c => {
       const p = document.createElement('p');
@@ -64,6 +73,7 @@
   });
   replay.addEventListener('click',() => { if (manifest) play(true,true); });
   video.addEventListener('volumechange',updateSound);
+  video.addEventListener('timeupdate',showCurrentLine);
   video.addEventListener('playing',() => {
     const audio = document.getElementById('mode-audio');
     if (audio) { audio.pause(); document.querySelectorAll('.speaking,.voice.playing').forEach(el => el.classList.remove('speaking','playing')); }

@@ -2,16 +2,16 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 (async()=>{
  const element=(dataset={})=>({dataset,textContent:'',disabled:false,events:{},classList:{toggle(){},remove(){}},setAttribute(){},addEventListener(type,fn){this.events[type]=fn},append(){},replaceChildren(){}});
  const video=Object.assign(element(),{muted:true,paused:true,ended:false,error:null,currentTime:0,plays:0,loads:0,behavior:'reject',pause(){this.paused=true},load(){this.loads++;this.error=null},play(){this.plays++;this.paused=false;if(this.behavior==='reject')return Promise.reject(Error('NotAllowedError'));if(this.behavior==='pending')return new Promise((yes,no)=>{this.rejectOld=no});return Promise.resolve()}});
- const status=element(),sound=element(),replay=element(),title=element(),transcript=element();
- const nodes={'video':video,'[data-showcase-status]':status,'[data-showcase-sound]':sound,'[data-showcase-replay]':replay,'[data-showcase-title]':title,'[data-showcase-transcript]':transcript};
+ const status=element(),sound=element(),replay=element(),title=element(),transcript=element(),currentCaption=element();
+ const nodes={'video':video,'[data-showcase-status]':status,'[data-showcase-sound]':sound,'[data-showcase-replay]':replay,'[data-showcase-title]':title,'[data-showcase-transcript]':transcript,'[data-showcase-current]':currentCaption};
  const root=element({showcase:'app'});root.querySelector=s=>nodes[s];root.querySelectorAll=()=>[];
  const doc={hidden:false,events:{},querySelector:()=>root,querySelectorAll:()=>[],getElementById:()=>null,createElement:()=>element(),createTextNode:s=>s,addEventListener(type,fn){this.events[type]=fn}};
  const win={matchMedia:()=>({matches:false}),addEventListener(){}};
- const modes=Object.fromEntries(['codependent','sarcastic','adult'].map(mode=>[mode,{src:mode+'.mp4',poster:mode+'.jpg',cast:[{id:mode,name:mode,line:'A complete line.'}]}]));
+ const modes=Object.fromEntries(['codependent','sarcastic','adult'].map(mode=>[mode,{src:mode+'.mp4',poster:mode+'.jpg',cast:[{id:mode,name:mode,line:'A complete line.',start:0,end:1},{id:mode+'2',name:'second',line:'The second character speaks.',start:1,end:2},{id:mode+'3',name:'third',line:'The third character speaks.',start:2,end:3}]}]));
  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../showcase.js'),'utf8'),{window:win,document:doc,location:{search:'?mode=sarcastic&sound=1'},URLSearchParams,AbortController,setTimeout,clearTimeout,fetch:async()=>({ok:true,json:async()=>({modes})})});
  const flush=()=>new Promise(resolve=>setImmediate(resolve));await flush();
  assert.equal(video.muted,true,'blocked sound resets to a silent state');assert.match(sound.textContent,/Watch & hear/);assert.match(status.textContent,/Tap Watch & hear/);
- video.behavior='resolve';sound.events.click();await flush();assert.equal(video.muted,false);assert.equal(sound.textContent,'Mute sound');
+ video.behavior='resolve';sound.events.click();await flush();assert.equal(video.muted,false);assert.equal(sound.textContent,'Mute sound');video.currentTime=1.5;video.events.timeupdate();assert.match(currentCaption.textContent,/second: The second character speaks/);
  video.behavior='pending';win.UnhingedShowcase.selectMode('adult',true);const rejectOld=video.rejectOld;
  video.behavior='resolve';win.UnhingedShowcase.selectMode('codependent',true);rejectOld(Error('cancelled'));await flush();assert.equal(video.src,'codependent.mp4');assert.equal(video.muted,false,'stale rejected playback must not mute the new mode');
  doc.hidden=true;doc.events.visibilitychange();assert.equal(video.paused,true);const plays=video.plays;win.UnhingedShowcase.selectMode('sarcastic',true);assert.equal(video.plays,plays,'hidden pages cannot restart audio');
